@@ -1,0 +1,877 @@
+/* =========================================================
+   Services page — extends style.css (uses the same tokens)
+   ========================================================= */
+
+/* ---------- Page hero ---------- */
+
+
+.page-hero__glow {
+  position: absolute;
+  inset-inline-start: -8%;
+  top: -15%;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(40, 194, 186, 0.22) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.crumbs ol {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--on-dark);
+}
+
+.crumbs li + li::before {
+  content: "/";
+  margin-inline-end: 10px;
+  opacity: 0.45;
+}
+
+.crumbs a {
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.crumbs a:hover {
+  color: var(--teal-bright);
+  border-color: var(--teal-bright);
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 7px 16px;
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(40, 194, 186, 0.35);
+  backdrop-filter: blur(10px);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--teal-bright);
+}
+
+.hero-eyebrow__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal-bright);
+  box-shadow: 0 0 10px var(--teal-bright);
+}
+
+.page-hero h1 {
+  color: #fff;
+  max-width: 16em;
+  font-size: clamp(2.1rem, 4.5vw, 3.5rem);
+  line-height: 1.45;
+  margin-top: 18px;
+  margin-bottom: 0;
+  letter-spacing: -0.01em;
+}
+
+.page-hero__intro {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 48px;
+  max-width: 64rem;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.page-hero__intro p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.page-hero__actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-glass {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.btn-glass:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--teal-bright);
+  transform: translateY(-2px);
+}
+
+/* Entrance animations */
+.page-hero .crumbs,
+.hero-eyebrow,
+.page-hero h1,
+.page-hero__intro,
+.page-hero__actions {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-eyebrow { animation-delay: 0.05s; }
+.page-hero h1 { animation-delay: 0.12s; }
+.page-hero__intro { animation-delay: 0.2s; }
+.page-hero__actions { animation-delay: 0.28s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+@media (max-width: 767.98px) {
+  .page-hero__intro { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* ---------- Sticky service index (Glass Pill Bar) ---------- */
+.svc-nav {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 25;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(11, 35, 64, 0.08);
+  box-shadow: 0 6px 24px rgba(11, 35, 64, 0.04);
+}
+
+.svc-nav__progress {
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--teal), var(--teal-bright));
+  transition: width 0.15s ease-out;
+}
+
+.svc-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.svc-nav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.svc-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 20px !important;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.svc-nav .bi {
+  color: var(--teal);
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.svc-nav a:hover {
+  color: var(--navy);
+  background: rgba(11, 35, 64, 0.04);
+}
+
+.svc-nav a.is-active {
+  color: var(--navy);
+  font-weight: 600;
+  background: rgba(40, 194, 186, 0.14);
+  border-color: rgba(40, 194, 186, 0.35);
+}
+
+.svc-nav a.is-active .bi {
+  transform: scale(1.1);
+}
+
+/* ---------- Service blocks ---------- */
+.svc-block {
+  position: relative;
+  padding-block: clamp(64px, 8vw, 112px);
+  scroll-margin-top: calc(var(--header-h) + 64px);
+  border-bottom: 1px solid rgba(11, 35, 64, 0.06);
+}
+
+.svc-blocks > .svc-block:nth-child(even) {
+  background:
+    radial-gradient(55% 75% at 88% 15%, rgba(40, 194, 186, 0.14), transparent 65%),
+    radial-gradient(45% 65% at 10% 85%, rgba(20, 110, 145, 0.18), transparent 65%),
+    var(--navy);
+  border-bottom: none;
+}
+
+.svc-block__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(36px, 5.5vw, 80px);
+  align-items: start;
+}
+
+.svc-blocks > .svc-block:nth-child(even) .svc-block__head {
+  order: 2;
+}
+
+/* Sticky Left/Right Header Column */
+.svc-block__head {
+  position: sticky;
+  top: calc(var(--header-h) + 92px);
+  min-width: 0;
+}
+
+.svc-block__meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.svc-block__no {
+  font-size: clamp(3.6rem, 6.5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, rgba(11, 35, 64, 0.18) 0%, rgba(11, 35, 64, 0.04) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+.svc-block__icon {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--navy) 0%, #133c6e 100%);
+  color: var(--teal-bright);
+  font-size: 1.65rem;
+  box-shadow: 0 12px 28px rgba(11, 35, 64, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.svc-block:hover .svc-block__icon {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(40, 194, 186, 0.25);
+}
+
+.svc-block__tag {
+  display: inline-block;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--teal-dark, var(--teal));
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.svc-block h2 {
+  font-size: clamp(1.7rem, 3.1vw, 2.35rem);
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* Body Column */
+.svc-block__body {
+  min-width: 0;
+  color: var(--ink);
+  width: 100%;
+  max-width: 700px;
+}
+
+.svc-block__lead {
+  font-size: 1.16rem;
+  line-height: 1.95;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Deliverables Card Grid */
+.includes {
+  margin-top: clamp(28px, 3.5vw, 40px);
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 1px solid rgba(11, 35, 64, 0.08);
+  box-shadow: 0 10px 30px rgba(11, 35, 64, 0.03);
+}
+
+.includes h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.includes h3::before {
+  content: "";
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--teal);
+}
+
+.includes ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .includes--cols ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 16px;
+  }
+}
+
+.includes ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 35, 64, 0.07);
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--navy);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.includes ul li::before {
+  content: "\F26E"; /* Bootstrap Icons check-lg */
+  font-family: "bootstrap-icons";
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: rgba(40, 194, 186, 0.14);
+  color: var(--teal-dark, var(--teal));
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.includes ul li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(40, 194, 186, 0.5);
+  box-shadow: 0 8px 20px rgba(11, 35, 64, 0.06);
+}
+
+.svc-block .link-more {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* ---------- Dark Navy Blocks (Even Children — Glassmorphic Theme) ---------- */
+.svc-blocks > .svc-block:nth-child(even) .svc-block__no {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.04) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.svc-blocks > .svc-block:nth-child(even) .svc-block__icon {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-bright) 100%);
+  color: var(--navy);
+  box-shadow: 0 12px 28px rgba(40, 194, 186, 0.28);
+}
+
+.svc-blocks > .svc-block:nth-child(even) .svc-block__tag {
+  color: var(--teal-bright);
+}
+
+.svc-blocks > .svc-block:nth-child(even) h2 {
+  color: #fff;
+}
+
+.svc-blocks > .svc-block:nth-child(even) .svc-block__lead {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.svc-blocks > .svc-block:nth-child(even) .includes {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+}
+
+.svc-blocks > .svc-block:nth-child(even) .includes h3 {
+  color: #fff;
+}
+
+.svc-blocks > .svc-block:nth-child(even) .includes ul li {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.svc-blocks > .svc-block:nth-child(even) .includes ul li::before {
+  background: rgba(40, 194, 186, 0.22);
+  color: var(--teal-bright);
+}
+
+.svc-blocks > .svc-block:nth-child(even) .includes ul li:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: var(--teal-bright);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.svc-blocks > .svc-block:nth-child(even) .link-more {
+  color: var(--teal-bright);
+}
+
+.svc-blocks > .svc-block:nth-child(even) .link-more:hover {
+  color: #fff;
+}
+
+/* ---------- 4-Step Connected Insurance Flow ---------- */
+.includes .steps4 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  counter-reset: s;
+}
+
+.includes .steps4 li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  counter-increment: s;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.includes .steps4 li:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(40, 194, 186, 0.45);
+}
+
+/* =========================================================
+   Services Page Styles
+   ========================================================= */
+
+.page-hero {
+  position: relative;
+background: 
+    linear-gradient(115deg, 
+      rgba(7, 24, 44, 0.90) 30%, 
+      rgba(11, 100, 118, 0.65) 50%, 
+      rgba(8, 25, 44, 0.95) 100%
+    ),
+    url('../Images/HeroSvc.png') center / cover no-repeat !important;
+  color: #ffffff !important;
+  padding-top: clamp(130px, 15vw, 170px);
+  padding-bottom: clamp(60px, 8vw, 90px);
+  overflow: hidden;
+}
+
+.page-hero__glow {
+  position: absolute;
+  top: -20%;
+  inset-inline-end: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(40, 194, 186, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero h1 {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.3;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.page-hero__intro {
+  color: var(--on-dark);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  max-width: 52rem;
+  display: grid;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.page-hero__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Secondary Sticky Service Index Nav */
+.svc-nav {
+  position: sticky;
+  top: calc(var(--header-h) + 12px);
+  z-index: 1020;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(7, 24, 44, 0.06);
+  padding-block: 14px;
+}
+
+.svc-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.svc-nav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.svc-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--off-white);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.svc-nav a:hover,
+.svc-nav a.is-active {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+
+.svc-nav a i {
+  font-size: 1rem;
+}
+
+/* Service Blocks Layout */
+.svc-blocks {
+  display: flex;
+  flex-direction: column;
+}
+
+.svc-block {
+  padding-block: clamp(64px, 8vw, 100px);
+  border-bottom: 1px solid var(--line);
+}
+
+.svc-block:nth-child(even) {
+  background-color: var(--off-white);
+}
+
+.svc-block__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.svc-block__head {
+  position: sticky;
+  top: calc(var(--header-h) + 80px);
+}
+
+.svc-block__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.svc-block__no {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.svc-block__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+}
+
+.svc-block__tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+.svc-block__head h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.svc-block__lead {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.includes {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(7, 24, 44, 0.04);
+}
+
+.includes h3 {
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.includes ul,
+.includes ol {
+  margin: 0;
+  padding-inline-start: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.includes li {
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 280px;
+  min-width: 0;
+  color: var(--muted);
+}
+
+.includes--cols ul {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 991.98px) {
+  .svc-block__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .svc-block__head {
+    position: static;
+  }
+  .includes--cols ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   Services Page Polish & Fixes
+   ========================================================= */
+
+/* 1. Make icons turn crisp white when hovered or active */
+.svc-nav a i {
+  color: var(--teal);
+  transition: color 0.2s ease;
+}
+
+.svc-nav a:hover i,
+.svc-nav a.is-active i {
+  color: var(--navy) !important;
+}
+
+/* =========================================================
+   Sleek Pill-Style Floating Service Bar
+   ========================================================= */
+.svc-nav {
+  position: sticky !important;
+  top: 86px !important; /* Positions it directly under the main navbar pill */
+  z-index: 1010 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding-block: 10px 16px !important;
+  margin-top: -10px;
+}
+
+/* Wrap the inner list inside a pill container matching the top navbar */
+.svc-nav .container {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(217, 227, 230, 0.85) !important;
+  border-radius: 10px !important;
+  padding: 8px 8px !important;
+  box-shadow: 0 10px 30px rgba(7, 24, 44, 0.08) !important;
+  margin-top: -14px !important;
+}
+
+.svc-nav ul {
+  justify-content: center !important;
+  gap: 6px !important;
+}
+
+.svc-nav a {
+  padding: 6px 16px !important;
+  font-size: 1rem !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  color: var(--muted) !important;
+  transition: all 0.2s ease !important;
+}
+
+.svc-nav a:hover {
+  background: var(--teal-soft) !important;
+  color: var(--teal-dark) !important;
+}
+
+.svc-nav a.is-active {
+  background: var(--teal) !important;
+  color: #fff !important;
+  border-color: var(--teal) !important;
+}
+
+.svc-nav a i {
+  color: var(--teal);
+  transition: color 0.2s ease;
+}
+
+.svc-nav a:hover i {
+  color: var(--teal-dark);
+}
+
+.svc-nav a.is-active i {
+  color: #fff !important;
+}
+
+/* 3. Fix uneven card heights & spacing inside "ما تشمله الخدمة" */
+.includes--cols ul {
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.includes--cols li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 52px !important;
+  padding: 12px 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* 4. Make the service number (01 - 07) bigger & bolder */
+.svc-block__no {
+  font-size: 4rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* =========================================================
+   Fix 4-Step Insurance Process Grid (2 columns x 2 rows)
+   ========================================================= */
+.includes .steps4 {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 14px !important;
+}
+
+.includes .steps4 li {
+  background: rgba(40, 194, 186, 0.06);
+  border: 1px solid rgba(40, 194, 186, 0.2);
+  border-radius: 10px;
+  padding: 14px 18px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--off-white);
+}
+
+/* Fix invisible glass button text on the services page hero */
+.page-hero .btn-glass,
+.page-hero .btn-outline-light {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.25s ease !important;
+}
+
+.page-hero .btn-glass:hover,
+.page-hero .btn-outline-light:hover {
+  background-color: var(--teal) !important;
+  border-color: var(--teal) !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 991.98px) {
+  .svc-nav ul {
+    justify-content: flex-start !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 8px;
+  }
+}
+
+/* Force 20px border-radius on the Services page eyebrow badge */
+.page-hero .hero-eyebrow,
+.page-hero .page-hero__eyebrow,
+.page-hero [class*="eyebrow"] {
+  border-radius: 10px !important;
+}
