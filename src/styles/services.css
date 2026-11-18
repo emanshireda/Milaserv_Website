@@ -507,7 +507,7 @@ background:
       rgba(11, 100, 118, 0.65) 50%, 
       rgba(8, 25, 44, 0.95) 100%
     ),
-    url('../Images/HeroSvc.png') center / cover no-repeat !important;
+    url('/Images/HeroSvc.png') center / cover no-repeat !important;
   color: #ffffff !important;
   padding-top: clamp(130px, 15vw, 170px);
   padding-bottom: clamp(60px, 8vw, 90px);

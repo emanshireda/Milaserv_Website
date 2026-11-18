@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { publicAsset } from '../utils/publicAsset';
 
 const SERVICES_LINKS = [
   { to: '/services#svc-1', label: 'خدمة العملاء ومراكز الاتصال' },
@@ -143,7 +144,7 @@ export default function Navbar() {
           <nav className="navbar navbar-expand-lg navbar-pill">
             {/* Brand / Logo */}
             <Link className="brand" to="/#top" onClick={closeAll}>
-              <img src="/Images/Logo.png" alt="MilaServ" height="42" width="42" />
+              <img src={publicAsset('Images/Logo.png')} alt="MilaServ" height="42" width="42" />
               <span>Milaserv</span>
             </Link>
 

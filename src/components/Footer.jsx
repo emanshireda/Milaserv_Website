@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { publicAsset } from '../utils/publicAsset';
 
 export default function Footer() {
   const currentYear = new Intl.NumberFormat('ar-EG', { numberingSystem: 'latn', useGrouping: false }).format(new Date().getFullYear());
@@ -9,7 +10,7 @@ export default function Footer() {
     <div className="container">
       <div className="row gy-4">
         <div className="col-lg-4">
-          <a className="brand" href="#top"><img src="Images/Logo1.png" alt="ميلاسيرف" width="34"
+          <a className="brand" href="#top"><img src={publicAsset('Images/Logo1.png')} alt="ميلاسيرف" width="34"
               height="34"/><span>Milaserv</span></a>
           <p className="mt-3">شريكك في تعهيد وإدارة الخدمات التشغيلية للقطاع الصحي.</p>
         </div>

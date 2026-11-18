@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { publicAsset } from '../utils/publicAsset';
 
 const HERO_BANNERS = [
     {
         id: 1,
-        image: '/Images/heroBG.jpg',
+        image: publicAsset('Images/heroBG.jpg'),
         eyebrow: 'منظومة متكاملة لتشغيل القطاع الصحي',
         titleLines: ['شريكك في تعهيد وإدارة', 'الخدمات التشغيلية للقطاع الصحي'],
         description: 'نساعد المنشآت الصحية في الخليج على رفع كفاءة التشغيل وتحسين تجربة العملاء، من خلال فرق متخصصة تعمل عن بُعد كامتداد لفريقك.',
     },
     {
         id: 2,
-        image: '/Images/HeroBG2.png',
+        image: publicAsset('Images/HeroBG2.png'),
         eyebrow: 'جودة عالية ومؤشرات أداء دقيقة',
         titleLines: ['4 سنوات من التميز التشغيلي', 'في مراكز الاتصال وتجربة العملاء'],
         description: 'نتولى إدارة تواصل المرضى عبر قنوات الاتصال المختلفة، والرد على استفساراتهم، وتنسيق المواعيد، ومتابعة الطلبات والشكاوى، مع مراقبة جودة الخدمة وقياس الأداء وفق إجراءات المنشأة.',
     },
     {
         id: 3,
-        image: '/Images/HeroBG3.png',
+        image: publicAsset('Images/HeroBG3.png'),
         eyebrow: 'دورة إيرادات أسرع وأكثر دقة',
         titleLines: ['إدارة العمليات التأمينية', 'والموافقات الطبية'],
         description: 'نضمن سرعة التحقق من أهلية التأمين والحصول على الموافقات ومتابعة المطالبات للحد من حالات الرفض.',
@@ -93,13 +94,13 @@ export default function Home() {
     // 1. Sectors Interactive State
     const [activeSector, setActiveSector] = useState(0);
     const sectorsData = [
-        { title: "المستشفيات", desc: "فرق متخصصة تدير التواصل مع المرضى والمراجعين.", img: "/Images/hospital.jpg" },
-        { title: "المجمعات الطبية", desc: "فرق تدعم التواصل عبر عيادات المجمع وأقسامه المختلفة.", img: "/Images/medical center.jpg" },
-        { title: "العيادات الخاصة", desc: "دعم يخفف العبء التشغيلي عن فريق العيادة.", img: "/Images/Clinic.webp" },
-        { title: "المختبرات الطبية", desc: "تواصل منظم مع مراجعي المعمل ومتابعة استفساراتهم.", img: "/Images/lab.jpg" },
-        { title: "الصيدليات", desc: "دعم تواصل الصيدلية مع عملائها ومتجرها الإلكتروني.", img: "/Images/Phramcy.jpg" },
-        { title: "منصات الرعاية الصحية", desc: "فرق متخصصة تدعم خدمة المستخدمين وتحسين تجربتهم.", img: "/Images/platforms.jpg" },
-        { title: "مزودو خدمات الطب الاتصالي", desc: "فرق متخصصة تدعم الاستشارات الافتراضية وجدولة المواعيد والفرز الطبي.", img: "/Images/healthcare.jpg" }
+        { title: "المستشفيات", desc: "فرق متخصصة تدير التواصل مع المرضى والمراجعين.", img: publicAsset('Images/hospital.jpg') },
+        { title: "المجمعات الطبية", desc: "فرق تدعم التواصل عبر عيادات المجمع وأقسامه المختلفة.", img: publicAsset('Images/medical center.jpg') },
+        { title: "العيادات الخاصة", desc: "دعم يخفف العبء التشغيلي عن فريق العيادة.", img: publicAsset('Images/Clinic.webp') },
+        { title: "المختبرات الطبية", desc: "تواصل منظم مع مراجعي المعمل ومتابعة استفساراتهم.", img: publicAsset('Images/lab.jpg') },
+        { title: "الصيدليات", desc: "دعم تواصل الصيدلية مع عملائها ومتجرها الإلكتروني.", img: publicAsset('Images/Phramcy.jpg') },
+        { title: "منصات الرعاية الصحية", desc: "فرق متخصصة تدعم خدمة المستخدمين وتحسين تجربتهم.", img: publicAsset('Images/platforms.jpg') },
+        { title: "مزودو خدمات الطب الاتصالي", desc: "فرق متخصصة تدعم الاستشارات الافتراضية وجدولة المواعيد والفرز الطبي.", img: publicAsset('Images/healthcare.jpg') }
     ];
 
     // 2. Essays Carousel Ref & Scroll Logic
@@ -518,7 +519,7 @@ export default function Home() {
                         <div className="essays-track">
                             <article className="essay-card">
                                 <div className="essay-card__banner">
-                                    <img src="/Images/Essay Banner1.png" alt="مقال 1" />
+                                    <img src={publicAsset('Images/Essay Banner1.png')} alt="مقال 1" />
                                     <span className="essay-card__cat">التعهيد الصحي</span>
                                 </div>
                                 <div className="essay-card__body">
@@ -530,7 +531,7 @@ export default function Home() {
 
                             <article className="essay-card">
                                 <div className="essay-card__banner">
-                                    <img src="/Images/Banner2.png" alt="مقال 2" />
+                                    <img src={publicAsset('Images/Banner2.png')} alt="مقال 2" />
                                     <span className="essay-card__cat">تجربة المرضى</span>
                                 </div>
                                 <div className="essay-card__body">
@@ -542,7 +543,7 @@ export default function Home() {
 
                             <article className="essay-card">
                                 <div className="essay-card__banner">
-                                    <img src="/Images/Banner3.png" alt="مقال 3" />
+                                    <img src={publicAsset('Images/Banner3.png')} alt="مقال 3" />
                                     <span className="essay-card__cat">التحول الرقمي</span>
                                 </div>
                                 <div className="essay-card__body">
@@ -554,7 +555,7 @@ export default function Home() {
 
                             <article className="essay-card">
                                 <div className="essay-card__banner">
-                                    <img src="/Images/Banner4.png" alt="مقال 4" />
+                                    <img src={publicAsset('Images/Banner4.png')} alt="مقال 4" />
                                     <span className="essay-card__cat">التعهيد الطبي</span>
                                 </div>
                                 <div className="essay-card__body">
@@ -566,7 +567,7 @@ export default function Home() {
 
                             <article className="essay-card">
                                 <div className="essay-card__banner">
-                                    <img src="/Images/Banner5.png" alt="عنوان المقال الخامس" />
+                                    <img src={publicAsset('Images/Banner5.png')} alt="عنوان المقال الخامس" />
                                     <span className="essay-card__cat">ألتعهيد الطبي</span>
                                 </div>
                                 <div className="essay-card__body">
