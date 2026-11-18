@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function FinalCTA() {
   return (
@@ -16,9 +17,11 @@ export default function FinalCTA() {
                 <a className="btn btn-brand-light btn-lg" href="https://calendly.com/milaserv" target="_blank" rel="noopener noreferrer">
                   <i className="bi bi-calendar-check me-2"></i> احجز استشارة
                 </a>
-                <a className="btn btn-whatsapp btn-lg" href="https://wa.me/201055577579" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-whatsapp me-2"></i> تواصل عبر واتساب
-                </a>
+                <Link to="/contact" target="_blank" className="btn btn-brand btn-lg">
+
+                  تواصل معنا
+                  <i className="bi bi-arrow-up-left" style={{ marginInlineStart: '12px' }}></i>
+                </Link>
               </div>
             </div>
           </div>

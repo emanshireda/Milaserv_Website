@@ -90,7 +90,7 @@ export default function Navbar() {
           padding: 8px !important;
           background: #ffffff !important;
           border: 1px solid rgba(217, 227, 230, 0.9) !important;
-          border-radius: 14px !important;
+          border-radius: 10px !important;
           box-shadow: 0 20px 45px rgba(7, 24, 44, 0.18) !important;
           z-index: 999999 !important;
           display: block !important;
@@ -106,7 +106,7 @@ export default function Navbar() {
           display: block !important;
           width: 100% !important;
           padding: 10px 14px !important;
-          border-radius: 8px !important;
+          border-radius: 10px !important;
           font-size: 0.94rem !important;
           font-weight: 500 !important;
           color: #17283B !important;
@@ -193,12 +193,6 @@ export default function Navbar() {
                   )}
                 </li>
 
-                {/* Regular Link: كيف نعمل؟ */}
-                <li className="nav-item">
-                  <Link className="nav-link" to="/#process" onClick={closeAll}>
-                    كيف نعمل؟
-                  </Link>
-                </li>
 
                 {/* Dropdown 2: القطاعات */}
                 <li className={`ms-nav-item ${openDropdown === 'sectors' ? 'is-open' : ''}`}>
@@ -229,10 +223,17 @@ export default function Navbar() {
                   )}
                 </li>
 
-                {/* Regular Link: لماذا ميلاسيرف؟ */}
+                {/* Regular Link: عن ميلاسيرف*/}
                 <li className="nav-item">
-                  <Link className="nav-link" to="/#why" onClick={closeAll}>
-                    لماذا ميلاسيرف؟
+                  <Link className="nav-link" to="#" onClick={closeAll}>
+                   عن ملاسيرف
+                  </Link>
+                </li>
+
+                 {/* Regular Link: المدونة*/}
+                <li className="nav-item">
+                  <Link className="nav-link" to="#" onClick={closeAll}>
+                   المدونة
                   </Link>
                 </li>
               </ul>

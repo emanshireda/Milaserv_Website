@@ -1,0 +1,333 @@
+/* =========================================================
+   MilaServ Leadership Team — Dark Glassmorphic Theme
+   ========================================================= */
+
+.team-section {
+  position: relative;
+  padding-block: clamp(56px, 7vw, 92px);
+  /* Restored dark gradient layered over background image option */
+  background:
+    radial-gradient(65% 75% at 85% 0%, rgba(40, 194, 186, 0.16), transparent 65%),
+    linear-gradient(135deg, rgba(7, 24, 44, 0.658), rgba(11, 35, 64, 0.789)),
+    url('/Images/BG4.jpg'); /* Replace with your preferred background image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--on-dark, #C3D3E2);
+  overflow: hidden;
+}
+
+/* Header & Left-Aligned Controls */
+.team-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.team-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--teal-bright, #28c2ba);
+  margin-bottom: 8px;
+}
+
+.team-tag::after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background: var(--teal-bright, #28c2ba);
+}
+
+.team-header__title h2 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.team-header__title p {
+  color: var(--on-dark, #C3D3E2);
+  font-size: 1.02rem;
+  max-width: 38rem;
+}
+
+.team-header__controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-inline-start: auto;
+}
+
+/* Dark Glass Navigation Arrows */
+.team-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(40, 194, 186, 0.35);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.team-arrow:hover {
+  background: var(--teal, #078B86);
+  border-color: var(--teal-bright, #28c2ba);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Dark Glass "View More" Pill Button */
+.team-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 10px 24px !important;
+  border-radius: 10px !important;
+  font-weight: 600;
+  color: #ffffff !important;
+  border: 1px solid rgba(40, 194, 186, 0.45) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.team-more-btn i {
+  color: var(--teal-bright, #28c2ba);
+  margin-inline-start: 12px !important;
+  margin-inline-end: 0 !important;
+  transition: color 0.25s ease;
+}
+
+.team-more-btn:hover {
+  background: var(--teal, #078B86) !important;
+  border-color: var(--teal-bright, #28c2ba) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.team-more-btn:hover i {
+  color: #ffffff;
+}
+
+/* Single-Row Horizontal Slider Viewport */
+.team-viewport {
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 60px;
+  /* Extra bottom padding prevents overflow-x from clipping card shadows */
+  padding-bottom: 52px;
+}
+
+.team-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.team-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  width: max-content;
+}
+
+/* Expanded Full Grid Layout */
+.team-full-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 24px;
+  padding-top: 60px;
+  padding-bottom: 52px;
+  animation: teamFadeIn 0.4s ease forwards;
+}
+
+@keyframes teamFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grayscale & Dim Non-Hovered Cards */
+.team-track:hover .team-card,
+.team-full-grid:hover .team-card {
+  filter: grayscale(100%) brightness(0.7);
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.team-track .team-card:hover,
+.team-full-grid .team-card:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  transform: translateY(-4px);
+  z-index: 5;
+}
+
+/* Rectangular Glassmorphic Card */
+.team-card {
+  flex: 0 0 280px;
+  height: 375px;
+  scroll-snap-align: start;
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s ease,
+              opacity 0.4s ease;
+}
+
+/* Restored Frosted Glass Card Gradient & Glow */
+.team-card__bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background:
+    radial-gradient(90% 75% at 50% 20%, rgba(40, 194, 186, 0.22), transparent 70%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(7, 24, 44, 0.65) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(40, 194, 186, 0.45);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.24),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+/* Subtle Tech Grid Texture Inside Glass Card */
+.team-card__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(40, 194, 186, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(40, 194, 186, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 85%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 85%);
+  pointer-events: none;
+}
+
+.team-card:hover .team-card__bg {
+  border-color: var(--teal-bright, #28c2ba);
+  background:
+    radial-gradient(95% 80% at 50% 15%, rgba(40, 194, 186, 0.32), transparent 70%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(7, 24, 44, 0.75) 100%);
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.34),
+    0 0 26px rgba(40, 194, 186, 0.26),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Portrait Container (Blends at bottom, pops out at top on hover) */
+.team-card__portrait-wrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  clip-path: inset(-120px 0px 0px 0px round 20px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.team-card__portrait {
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+  object-position: bottom center;
+  transform-origin: bottom center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+}
+
+.team-card:hover .team-card__portrait {
+  transform: scale(1.13) translateY(-10px);
+}
+
+/* Bottom Gradient Blend + Light Typography */
+.team-card__overlay {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 56px 22px 22px;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 24, 44, 0) 0%,
+    rgba(7, 24, 44, 0.85) 48%,
+    rgba(7, 24, 44, 0.98) 100%
+  );
+  text-align: right;
+  pointer-events: none;
+}
+
+.team-card__name {
+  color: #ffffff;
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.team-card__role {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8EDBD6;
+  line-height: 1.45;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .team-full-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-header__controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .team-card {
+    flex: 0 0 255px;
+    height: 350px;
+  }
+
+  .team-full-grid {
+    grid-template-columns: 1fr;
+  }
+}

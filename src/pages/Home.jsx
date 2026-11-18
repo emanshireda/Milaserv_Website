@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
+import TeamSection from '../components/TeamSection';
 
 const HERO_BANNERS = [
     {
@@ -586,6 +587,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+                {/* ================= TEAM SECTION (NEW) ================= */}
+            <TeamSection />
         </>
     );
 }

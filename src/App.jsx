@@ -5,6 +5,7 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import ContactForm from './components/ContactForm';
 import { useSiteEffects } from './utils/useSiteEffects';
 
 function Layout() {
@@ -72,6 +73,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<ContactForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

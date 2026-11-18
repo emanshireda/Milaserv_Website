@@ -53,7 +53,7 @@ html {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(217, 227, 230, 0.85);
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px 24px 10px 12px;
   /* Slightly tighter padding on the CTA side */
   box-shadow: 0 12px 32px rgba(7, 24, 44, 0.08);
@@ -142,13 +142,13 @@ html {
 
 .dropdown-menu {
   margin-top: 14px !important;
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 8px;
   box-shadow: 0 16px 36px rgba(7, 24, 44, 0.12) !important;
 }
 
 .dropdown-menu .dropdown-item {
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 8px 14px;
   font-size: 0.94rem;
 }
@@ -1199,7 +1199,7 @@ a {
   color: var(--teal-bright);
   background: rgba(40, 194, 186, 0.18);
   padding: 4px 12px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin-bottom: 12px;
   border: 1px solid rgba(40, 194, 186, 0.4);
 }
@@ -1454,7 +1454,7 @@ a {
   background: rgba(40, 194, 186, 0.12);
   border: 1px solid rgba(40, 194, 186, 0.3);
   padding: 4px 12px;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 .why__gov h3 {
@@ -1570,7 +1570,7 @@ a {
   align-items: center;
   gap: 8px;
   padding: 10px 22px !important;
-  border-radius: 999px !important;
+  border-radius: 10px !important;
 }
 
 .essays-viewport {
@@ -1643,7 +1643,7 @@ a {
   font-size: 0.78rem;
   font-weight: 600;
   padding: 4px 12px;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 .essay-card__body {
@@ -1735,7 +1735,7 @@ a {
   background: rgba(40, 194, 186, 0.12);
   border: 1px solid rgba(40, 194, 186, 0.3);
   padding: 4px 14px;
-  border-radius: 50px;
+  border-radius: 10px;
   margin-bottom: 14px;
 }
 
@@ -2347,4 +2347,15 @@ a {
   pointer-events: auto !important;
   position: relative !important;
   z-index: 11 !important;
+}
+
+/* Unified 10px shape for actions and eyebrow labels across the site. */
+button,
+.btn,
+a.btn,
+[role="button"],
+[class*="eyebrow"],
+[class*="-badge"],
+[class*="_badge"] {
+  border-radius: 10px !important;
 }

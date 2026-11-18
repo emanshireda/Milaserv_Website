@@ -799,7 +799,7 @@ background:
   }
 }
 
-/* Force 20px border-radius on the Services page eyebrow badge */
+/* Force 10px border-radius on the Services page eyebrow badge */
 .page-hero .hero-eyebrow,
 .page-hero .page-hero__eyebrow,
 .page-hero [class*="eyebrow"] {
