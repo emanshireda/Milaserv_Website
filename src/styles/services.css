@@ -220,8 +220,8 @@
 
 .svc-blocks > .svc-block:nth-child(even) {
   background:
-    radial-gradient(55% 75% at 88% 15%, rgba(40, 194, 186, 0.14), transparent 65%),
-    radial-gradient(45% 65% at 10% 85%, rgba(20, 110, 145, 0.18), transparent 65%),
+    radial-gradient(55% 75% at 88% 15%, rgba(40, 194, 186, 0.282), transparent 65%),
+    radial-gradient(45% 65% at 10% 85%, rgba(9, 100, 136, 0.44), transparent 65%),
     var(--navy);
   border-bottom: none;
 }
@@ -404,11 +404,10 @@
 .svc-blocks > .svc-block:nth-child(even) .svc-block__no {
   background: linear-gradient(
     155deg,
-    var(--off-white) 0%,
-    var(--teal-soft) 24%,
-    var(--teal-bright) 48%,
-    var(--teal-soft) 72%,
-    var(--on-dark) 100%
+    rgba(11, 53, 64, 0.25) 0%,
+    rgba(5, 185, 179, 0.85) 30%,
+    rgba(15, 137, 137, 0.778) 60%,
+    rgba(17, 187, 206, 0.59) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
