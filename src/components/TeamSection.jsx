@@ -39,12 +39,22 @@ export default function TeamSection() {
   const sliderRef = useRef(null);
   const [showAll, setShowAll] = useState(false);
 
+  // Force scroll to the rightmost starting position on mount or when returning from grid view
+  useEffect(() => {
+    if (!showAll && sliderRef.current) {
+      // In RTL layouts, scrollLeft starts at max negative width or max scroll width
+      const viewport = sliderRef.current;
+      viewport.scrollLeft = viewport.scrollWidth; 
+    }
+  }, [showAll]);
+
   const scrollTeam = (direction) => {
     if (!sliderRef.current) return;
     const card = sliderRef.current.querySelector('.team-card');
     const step = card ? card.offsetWidth + 24 : 304;
 
     sliderRef.current.scrollBy({
+      // In RTL, reversing the step direction ensures intuitive arrow navigation
       left: direction === 'next' ? -step : step,
       behavior: 'smooth',
     });
@@ -57,10 +67,10 @@ export default function TeamSection() {
 
     const viewport = sliderRef.current;
     let autoSlide = setInterval(() => {
-      const maxScroll = viewport.scrollWidth - viewport.clientWidth;
-      const currentScroll = Math.abs(viewport.scrollLeft);
-      if (currentScroll >= maxScroll - 10) {
-        viewport.scrollTo({ left: 0, behavior: 'smooth' });
+      const currentScroll = viewport.scrollLeft;
+      // If reached the end on the left, loop back to the right starting point
+      if (currentScroll <= 10) {
+        viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
       } else {
         viewport.scrollBy({ left: -304, behavior: 'smooth' });
       }
