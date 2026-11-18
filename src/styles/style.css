@@ -2359,3 +2359,139 @@ a.btn,
 [class*="_badge"] {
   border-radius: 10px !important;
 }
+
+/* =========================================================
+   Hero Bottom Integrated Partners Ticker (RTL Glassmorphic)
+   ========================================================= */
+
+.hero-partners-bar {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-top: clamp(32px, 4vw, 52px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(40, 194, 186, 0.2);
+  background: transparent;
+  text-align: center;
+}
+
+.hero-partners__title {
+  color: var(--on-dark, #C3D3E2);
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+/* Marquee Viewport with Soft Edge Fade */
+.hero-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  direction: ltr; /* Keeps translateX math predictable regardless of RTL page flow */
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.hero-marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: max-content;
+  animation: heroPartnersScroll 24s linear infinite;
+}
+
+.hero-marquee:hover .hero-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes heroPartnersScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.hero-partner-pill {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 155px;
+  height: 58px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(40, 194, 186, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* hero partner pill*/
+.hero-partner-pill::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 22px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.hero-partner-pill:hover::after {
+  opacity: 1;
+}
+
+.hero-partner-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 0 16px rgba(255, 255, 255, 0.16);
+}
+
+.hero-partner-pill__logo {
+  position: relative;
+  z-index: 1;
+  max-width: 112px;
+  max-height: 34px;
+  object-fit: contain;
+  /* Default unhovered state: white monochrome */
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover state: reveals original brand colors + adds a white drop-shadow glow underneath */
+.hero-partner-pill:hover .hero-partner-pill__logo {
+  opacity: 1;
+  transform: translateY(-1px);
+  filter: none; /* Removes the white monochrome filter to show original colors */
+  filter: drop-shadow(0 6px 12px rgba(255, 255, 255, 0.8)); /* Casts the white glow beneath the logo shape */
+}
+
+.hero-partner-pill__fallback {
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .hero-marquee__track {
+    gap: 18px;
+    animation-duration: 18s;
+  }
+
+  .hero-partner-pill {
+    flex: 0 0 132px;
+    height: 50px;
+    padding: 8px 14px;
+  }
+}
