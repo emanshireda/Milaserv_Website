@@ -106,6 +106,12 @@ export default function Home() {
     // 2. Essays Carousel Ref & Scroll Logic
     const essaysViewportRef = useRef(null);
 
+    useEffect(() => {
+        if (essaysViewportRef.current) {
+            essaysViewportRef.current.scrollLeft = 0;
+        }
+    }, []);
+
     const scrollEssays = (direction) => {
         if (!essaysViewportRef.current) return;
         const card = essaysViewportRef.current.querySelector('.essay-card');
@@ -345,7 +351,7 @@ export default function Home() {
                     <header className="section-head text-center mx-auto">
                         <span className="how-tag">آلية العمل</span>
                         <h2>كيف نعمل؟</h2>
-                       <p>ثلاث خطوات لبناء وإدارة فرق عمل متخصصة، وفق نموذج تشغيلي يعتمد على الخبرة الصحية وتحليل البيانات وقياس الأداء.</p>
+                        <p>ثلاث خطوات لبناء وإدارة فرق عمل متخصصة، وفق نموذج تشغيلي يعتمد على الخبرة الصحية وتحليل البيانات وقياس الأداء.</p>
                     </header>
 
                     <div className="journey-wrapper">

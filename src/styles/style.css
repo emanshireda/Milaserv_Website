@@ -1494,10 +1494,7 @@ a {
   }
 }
 
-/* =========================================================
-   Recent Essays Carousel Section (أحدث المقالات)
-   ========================================================= */
-
+/* ---------- Recent Essays Carousel Section (أحدث المقالات) ---------- */
 .essays-section {
   position: relative;
   overflow: hidden;
@@ -1540,7 +1537,6 @@ a {
   gap: 16px;
 }
 
-/* Circular Navigation Arrows */
 .essays-nav {
   display: inline-flex;
   align-items: center;
@@ -1577,31 +1573,31 @@ a {
   border-radius: 999px !important;
 }
 
-/* Horizontal Scroll Viewport & Track */
 .essays-viewport {
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; /* Ensures clean snapping per card */
+  scroll-padding-inline: 0px;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE/Edge */
   padding-block: 8px 16px;
 }
 
 .essays-viewport::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari */
 }
 
 .essays-track {
   display: flex;
   gap: 24px;
+  /* Prevents track items from shrinking out of proportion on load */
+  width: max-content;
 }
 
-/* Individual Essay Card (Shows ~3 cards on desktop so the 4th scrolls smoothly) */
 .essay-card {
-  flex: 0 0 calc((100% - 48px) / 3);
-  min-width: 300px;
+  /* Use explicit fixed width per card to eliminate percentage recalculation glitches */
+  flex: 0 0 420px;
+  scroll-snap-align: start;
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -1618,7 +1614,6 @@ a {
   border-color: var(--teal);
 }
 
-/* Banner Image Box */
 .essay-card__banner {
   position: relative;
   height: 205px;
@@ -1651,7 +1646,6 @@ a {
   border-radius: 50px;
 }
 
-/* Essay Card Content */
 .essay-card__body {
   padding: 24px;
   display: flex;
@@ -1695,14 +1689,13 @@ a {
 
 @media (max-width: 991.98px) {
   .essay-card {
-    flex: 0 0 calc((100% - 24px) / 2);
+    flex: 0 0 310px;
   }
 }
 
 @media (max-width: 575.98px) {
   .essay-card {
-    flex: 0 0 88%;
-    min-width: 260px;
+    flex: 0 0 280px;
   }
 }
 
