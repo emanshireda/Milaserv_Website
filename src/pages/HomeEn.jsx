@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
+import TeamSection from '../components/TeamSection';
 
 const HEROES = [
   {
@@ -245,6 +246,8 @@ export default function HomeEn() {
                 ['Essay Banner1.png', 'Healthcare Outsourcing', '15 November 2026', 'Is medical call centre outsourcing limited to answering calls?', 'https://tinyurl.com/5febu9tf'],
                 ['Banner2.png', 'Patient Experience', '10 November 2026', 'How does a medical call centre improve patient experience?', 'https://tinyurl.com/y6uce8v8'],
                 ['Banner3.png', 'Digital Transformation', '4 November 2026', 'Digital transformation in Saudi healthcare: how have operating services changed?', 'https://shorturl.at/HWPan'],
+                ['Banner4.png', 'Healthcare Outsourcing', '28 October 2026', 'Medical call centres for pharmacies: services that can be outsourced', 'https://shorturl.at/iI3Z7'],
+                ['Banner5.png', 'Healthcare Outsourcing', '20 October 2026', 'Key medical call centre performance indicators and how to measure efficiency', '#'],
               ].map(([image, category, date, title, link]) => (
                 <article className="essay-card" key={title}><div className="essay-card__banner"><img src={publicAsset(`Images/${image}`)} alt="" /><span className="essay-card__cat">{category}</span></div><div className="essay-card__body"><span className="essay-card__date"><i className="bi bi-calendar3" /> {date}</span><h3><a href={link}>{title}</a></h3><a href={link} className="link-more">Read article</a></div></article>
               ))}
@@ -252,6 +255,7 @@ export default function HomeEn() {
           </div>
         </div>
       </section>
+      <TeamSection isEnglish />
     </div>
   );
 }

@@ -185,7 +185,7 @@ export default function Navbar() {
             {/* Navbar Links */}
             <div className={`collapse navbar-collapse ${mobileOpen ? 'show' : ''}`} id="mainNav">
               <ul className="navbar-nav mx-lg-auto align-lg-items-center gap-2 gap-lg-4">
-                
+
                 {/* Dropdown 1: services */}
                 <li className={`ms-nav-item ${openDropdown === 'services' ? 'is-open' : ''}`}>
                   <button
@@ -268,45 +268,52 @@ export default function Navbar() {
                   </Link>
                 </li>
 
-                 {/* Regular Link: المدونة*/}
+                {/* Regular Link: المدونة*/}
                 <li className="nav-item">
-                  <Link className="nav-link" to="#" onClick={closeAll}>
-                   {isEnglish ? 'Insights' : 'المدونة'}
+                  <Link className="nav-link" to={`${base}/#essays`} onClick={closeAll}>
+                    {isEnglish ? 'Insights' : 'المدونة'}
                   </Link>
                 </li>
 
-              {/* Regular Link: career*/}
+                {/* Regular Link: career*/}
                 <li className="nav-item">
                   <Link className="nav-link" to="#" onClick={closeAll}>
-                   Career
+                   {isEnglish ? 'Careers' : 'الوظائف'}
+                  </Link>
+                </li>
+
+                {/* Regular Link: الأسئلة الشائعة*/}
+                <li className="nav-item">
+                  <Link className="nav-link" to="#" onClick={closeAll}>
+                    {isEnglish ? 'Frequently Asked Questions' : 'الأسئلة الشائعة'}
                   </Link>
                 </li>
               </ul>
 
               {/* Pill Action Button */}
               <div className="d-flex align-items-center gap-2 ms-lg-2">
-              <a href="#contact" className="btn btn-brand btn-pill-cta" onClick={closeAll}>
-                <span>{isEnglish ? 'Book a Consultation' : 'احجز استشارة'}</span>
-                <span className="btn-pill-circle" aria-hidden="true">
-                  <i className={`bi ${isEnglish ? 'bi-arrow-up-right' : 'bi-arrow-up-left'}`}></i>
-                </span>
-              </a>
-              <div className="language-switcher" aria-label="Language">
-                <Link
-                  to={arabicPath}
-                  className={!isEnglish ? 'is-active' : ''}
-                  onClick={closeAll}
-                >
-                  عربي
-                </Link>
-                <Link
-                  to={englishPath}
-                  className={isEnglish ? 'is-active' : ''}
-                  onClick={closeAll}
-                >
-                  EN
-                </Link>
-              </div>
+                <a href="#contact" className="btn btn-brand btn-pill-cta" onClick={closeAll}>
+                  <span>{isEnglish ? 'Book a Consultation' : 'احجز استشارة'}</span>
+                  <span className="btn-pill-circle" aria-hidden="true">
+                    <i className={`bi ${isEnglish ? 'bi-arrow-up-right' : 'bi-arrow-up-left'}`}></i>
+                  </span>
+                </a>
+                <div className="language-switcher" aria-label="Language">
+                  <Link
+                    to={arabicPath}
+                    className={!isEnglish ? 'is-active' : ''}
+                    onClick={closeAll}
+                  >
+                    عربي
+                  </Link>
+                  <Link
+                    to={englishPath}
+                    className={isEnglish ? 'is-active' : ''}
+                    onClick={closeAll}
+                  >
+                    EN
+                  </Link>
+                </div>
               </div>
             </div>
           </nav>

@@ -35,18 +35,29 @@ const teamMembers = [
   },
 ];
 
-export default function TeamSection() {
+const englishTeamMembers = [
+  { name: '[Chief Executive Name]', role: 'Chief Executive Officer (CEO)' },
+  { name: '[Operations Director Name]', role: 'Chief Operating Officer (COO)' },
+  { name: '[Finance Director Name]', role: 'Chief Financial Officer (CFO)' },
+  { name: '[Quality Manager Name]', role: 'Quality Assurance Manager' },
+  { name: '[HR Manager Name]', role: 'Human Resources Manager' },
+  { name: '[Commercial Manager Name]', role: 'Commercial Manager' },
+];
+
+export default function TeamSection({ isEnglish = false }) {
   const sliderRef = useRef(null);
   const [showAll, setShowAll] = useState(false);
+  const members = isEnglish
+    ? teamMembers.map((member, index) => ({ ...member, ...englishTeamMembers[index] }))
+    : teamMembers;
 
-  // Force scroll to the rightmost starting position on mount or when returning from grid view
+  // Start at the first card in each reading direction.
   useEffect(() => {
     if (!showAll && sliderRef.current) {
-      // In RTL layouts, scrollLeft starts at max negative width or max scroll width
       const viewport = sliderRef.current;
-      viewport.scrollLeft = viewport.scrollWidth; 
+      viewport.scrollLeft = isEnglish ? 0 : viewport.scrollWidth;
     }
-  }, [showAll]);
+  }, [isEnglish, showAll]);
 
   const scrollTeam = (direction) => {
     if (!sliderRef.current) return;
@@ -54,8 +65,9 @@ export default function TeamSection() {
     const step = card ? card.offsetWidth + 24 : 304;
 
     sliderRef.current.scrollBy({
-      // In RTL, reversing the step direction ensures intuitive arrow navigation
-      left: direction === 'next' ? -step : step,
+      left: isEnglish
+        ? (direction === 'next' ? step : -step)
+        : (direction === 'next' ? -step : step),
       behavior: 'smooth',
     });
   };
@@ -68,12 +80,15 @@ export default function TeamSection() {
 
     const viewport = sliderRef.current;
     let autoSlide = setInterval(() => {
-      const currentScroll = viewport.scrollLeft;
-      // If reached the end on the left, loop back to the right starting point
-      if (currentScroll <= 10) {
-        viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+      const atEnd = isEnglish
+        ? viewport.scrollLeft >= maxScroll - 10
+        : viewport.scrollLeft <= 10;
+
+      if (atEnd) {
+        viewport.scrollTo({ left: isEnglish ? 0 : viewport.scrollWidth, behavior: 'smooth' });
       } else {
-        viewport.scrollBy({ left: -304, behavior: 'smooth' });
+        viewport.scrollBy({ left: isEnglish ? 304 : -304, behavior: 'smooth' });
       }
     }, 3500);
 
@@ -81,7 +96,16 @@ export default function TeamSection() {
     const resume = () => {
       clearInterval(autoSlide);
       autoSlide = setInterval(() => {
-        viewport.scrollBy({ left: -304, behavior: 'smooth' });
+        const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+        const atEnd = isEnglish
+          ? viewport.scrollLeft >= maxScroll - 10
+          : viewport.scrollLeft <= 10;
+
+        if (atEnd) {
+          viewport.scrollTo({ left: isEnglish ? 0 : viewport.scrollWidth, behavior: 'smooth' });
+        } else {
+          viewport.scrollBy({ left: isEnglish ? 304 : -304, behavior: 'smooth' });
+        }
       }, 3500);
     };
 
@@ -92,17 +116,17 @@ export default function TeamSection() {
       viewport.removeEventListener('mouseenter', pause);
       viewport.removeEventListener('mouseleave', resume);
     };
-  }, [showAll]);
+  }, [isEnglish, showAll]);
 
   return (
-    <section className="section team-section" id="team" dir="rtl">
+    <section className="section team-section" id="team" dir={isEnglish ? 'ltr' : 'rtl'}>
       <div className="container">
         {/* Header + Left-Aligned Controls */}
         <div className="team-header" data-reveal>
           <div className="team-header__title">
-            <span className="team-tag">فريق القيادة</span>
-            <h2>قيادات تقود التميز التشغيلي</h2>
-            <p>نخبة من الخبراء والمتخصصين لإدارة وتشغيل خدمات منشأتك الصحية بأعلى معايير الجودة.</p>
+            <span className="team-tag">{isEnglish ? 'Leadership Team' : 'فريق القيادة'}</span>
+            <h2>{isEnglish ? 'Leaders driving operational excellence' : 'قيادات تقود التميز التشغيلي'}</h2>
+            <p>{isEnglish ? 'A team of experienced specialists managing and operating your healthcare services to the highest standards.' : 'نخبة من الخبراء والمتخصصين لإدارة وتشغيل خدمات منشأتك الصحية بأعلى معايير الجودة.'}</p>
           </div>
 
           <div className="team-header__controls">
@@ -112,17 +136,17 @@ export default function TeamSection() {
                   type="button"
                   className="team-arrow"
                   onClick={() => scrollTeam('prev')}
-                  aria-label="السابق"
+                  aria-label={isEnglish ? 'Previous' : 'السابق'}
                 >
-                  <i className="bi bi-arrow-right"></i>
+                  <i className={`bi ${isEnglish ? 'bi-arrow-left' : 'bi-arrow-right'}`}></i>
                 </button>
                 <button
                   type="button"
                   className="team-arrow"
                   onClick={() => scrollTeam('next')}
-                  aria-label="التالي"
+                  aria-label={isEnglish ? 'Next' : 'التالي'}
                 >
-                  <i className="bi bi-arrow-left"></i>
+                  <i className={`bi ${isEnglish ? 'bi-arrow-right' : 'bi-arrow-left'}`}></i>
                 </button>
               </div>
             )}
@@ -132,7 +156,7 @@ export default function TeamSection() {
               className="btn btn-outline-navy team-more-btn"
               onClick={() => setShowAll(!showAll)}
             >
-              <span>{showAll ? 'عرض الشريط' : 'عرض المزيد'}</span>
+              <span>{showAll ? (isEnglish ? 'Show slider' : 'عرض الشريط') : (isEnglish ? 'View more' : 'عرض المزيد')}</span>
               <i className={`bi ${showAll ? 'bi-grid' : 'bi-arrow-up-left'}`}></i>
             </button>
           </div>
@@ -141,7 +165,7 @@ export default function TeamSection() {
         {/* Dynamic View: Horizontal Slider OR Expanded Full Grid */}
         {showAll ? (
           <div className="team-full-grid animate-fade-in">
-            {teamMembers.map((member, index) => (
+            {members.map((member, index) => (
               <article className="team-card" key={index}>
                 <div className="team-card__bg" aria-hidden="true"></div>
                 <div className="team-card__portrait-wrap">
@@ -162,7 +186,7 @@ export default function TeamSection() {
         ) : (
           <div className="team-viewport" ref={sliderRef} data-reveal>
             <div className="team-track">
-              {teamMembers.map((member, index) => (
+              {members.map((member, index) => (
                 <article className="team-card" key={index}>
                   <div className="team-card__bg" aria-hidden="true"></div>
                   <div className="team-card__portrait-wrap">

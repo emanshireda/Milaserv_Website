@@ -311,6 +311,10 @@
   line-height: 1.45;
 }
 
+.team-section[dir="ltr"] .team-card__overlay {
+  text-align: left;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 991.98px) {
   .team-full-grid {

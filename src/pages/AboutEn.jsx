@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
+import TeamSection from '../components/TeamSection';
 
 const STATS = [
   ['01', 'Customer interactions to date', '15M+', 'Customer interactions'],
@@ -16,10 +17,32 @@ const SUPPORT = ['Customer Service & Contact Centres', 'Medical Insurance Admini
 
 export default function AboutEn() {
   const [activeStat, setActiveStat] = useState(0);
+  const [activeSection, setActiveSection] = useState('numbers');
   const current = STATS[activeStat];
 
   useEffect(() => {
     document.title = 'About Milaserv';
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ['numbers', 'operating-model', 'healthcare-scope', 'team'];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section) => section !== null);
+
+    if (!('IntersectionObserver' in window) || sections.length === 0) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: '-35% 0px -60% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -45,9 +68,10 @@ export default function AboutEn() {
 
       <nav className="about-nav" aria-label="About sections">
         <div className="container"><ul>
-          <li><a href="#numbers"><i className="bi bi-bar-chart-line" />Milaserv in numbers</a></li>
-          <li><a href="#operating-model"><i className="bi bi-gear" />Operating model</a></li>
-          <li><a href="#healthcare-scope"><i className="bi bi-hospital" />Healthcare focus</a></li>
+          <li><a href="#numbers" className={activeSection === 'numbers' ? 'is-active' : ''} aria-current={activeSection === 'numbers' ? 'true' : undefined}><i className="bi bi-bar-chart-line" />Milaserv in numbers</a></li>
+          <li><a href="#operating-model" className={activeSection === 'operating-model' ? 'is-active' : ''} aria-current={activeSection === 'operating-model' ? 'true' : undefined}><i className="bi bi-gear" />Operating model</a></li>
+          <li><a href="#healthcare-scope" className={activeSection === 'healthcare-scope' ? 'is-active' : ''} aria-current={activeSection === 'healthcare-scope' ? 'true' : undefined}><i className="bi bi-hospital" />Healthcare focus</a></li>
+          <li><a href="#team" className={activeSection === 'team' ? 'is-active' : ''} aria-current={activeSection === 'team' ? 'true' : undefined}><i className="bi bi-people" />Leadership Team</a></li>
         </ul></div>
       </nav>
 
@@ -92,6 +116,8 @@ export default function AboutEn() {
           <div className="col-lg-6"><div className="scope-matrix-box"><div className="scope-matrix-group"><span className="scope-matrix-label">Healthcare organisations</span><div className="scope-chips-grid">{ENTITIES.map((entity) => <div key={entity} className="scope-entity-chip"><i className="bi bi-check2-circle" aria-hidden="true" /><span>{entity}</span></div>)}</div></div><div className="scope-matrix-divider" /><div className="scope-matrix-group"><span className="scope-matrix-label">Operational services</span><ul className="scope-services-list">{SUPPORT.map((service) => <li key={service}><i className="bi bi-check2-circle" aria-hidden="true" /><span>{service}</span></li>)}</ul></div></div></div>
         </div></div>
       </section>
+
+      <TeamSection isEnglish />
 
     </div>
   );
