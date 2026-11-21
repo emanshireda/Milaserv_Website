@@ -325,6 +325,12 @@ html[lang="en"] .language-switcher a.is-active {
     border-right: 0;
   }
 
+  html[lang="en"] .svc-block__body {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 1199.98px) {
   html[lang="en"] .navbar-collapse,
   html[lang="en"] .navbar-nav,
   html[lang="en"] .navbar-nav .nav-item,
@@ -343,10 +349,6 @@ html[lang="en"] .language-switcher a.is-active {
   html[lang="en"] .navbar-collapse .btn-pill-cta {
     width: auto !important;
     margin-top: 8px !important;
-  }
-
-  html[lang="en"] .svc-block__body {
-    margin-inline: 0;
   }
 }
 

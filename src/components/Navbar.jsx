@@ -141,7 +141,7 @@ export default function Navbar() {
           background-color: #0B2340 !important;
           color: #ffffff !important;
         }
-        @media (max-width: 991.98px) {
+        @media (max-width: 1199.98px) {
           .ms-nav-item {
             flex-direction: column !important;
             align-items: stretch !important;
@@ -163,7 +163,7 @@ export default function Navbar() {
         id="header"
       >
         <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-pill">
+          <nav className="navbar navbar-expand-xl navbar-pill">
             {/* Brand / Logo */}
             <Link className="brand" to={`${base}/#top`} onClick={closeAll}>
               <img src={publicAsset('Images/Logo.png')} alt="MilaServ" height="42" width="42" />
@@ -184,7 +184,7 @@ export default function Navbar() {
 
             {/* Navbar Links */}
             <div className={`collapse navbar-collapse ${mobileOpen ? 'show' : ''}`} id="mainNav">
-              <ul className="navbar-nav mx-lg-auto align-lg-items-center gap-2 gap-lg-4">
+              <ul className="navbar-nav mx-xl-auto align-xl-items-center gap-2 gap-xl-4">
 
                 {/* Dropdown 1: services */}
                 <li className={`ms-nav-item ${openDropdown === 'services' ? 'is-open' : ''}`}>
@@ -291,7 +291,7 @@ export default function Navbar() {
               </ul>
 
               {/* Pill Action Button */}
-              <div className="d-flex align-items-center gap-2 ms-lg-2">
+              <div className="d-flex align-items-center gap-2 ms-xl-2">
                 <a href="#contact" className="btn btn-brand btn-pill-cta" onClick={closeAll}>
                   <span>{isEnglish ? 'Book a Consultation' : 'احجز استشارة'}</span>
                   <span className="btn-pill-circle" aria-hidden="true">
