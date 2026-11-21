@@ -41,7 +41,7 @@ export default function Services() {
           <nav className="crumbs" aria-label="مسار التصفح">
             <ol>
               <li><Link to="/">الرئيسية</Link></li>
-              <li aria-current="page">خدماتنا</li>
+              <li><span aria-current="page">خدماتنا</span></li>
             </ol>
           </nav>
 

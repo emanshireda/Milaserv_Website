@@ -35,6 +35,20 @@
     margin-bottom: 36px;
 }
 
+.contact-form-section[dir="ltr"] .contact-form__head,
+.contact-form-section[dir="ltr"] .form-group {
+    text-align: left;
+}
+
+.contact-submit-error {
+    margin: 0 0 20px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 184, 92, 0.55);
+    border-radius: 10px;
+    background: rgba(255, 184, 92, 0.08);
+    color: #ffd7a1;
+}
+
 .contact-tag {
     display: inline-flex;
     align-items: center;

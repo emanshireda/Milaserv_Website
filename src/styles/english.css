@@ -1,0 +1,370 @@
+html[lang="en"] {
+  --font: "IBM Plex Sans Arabic", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font);
+}
+
+html[lang="en"] body,
+html[lang="en"] #root,
+html[lang="en"] main,
+html[lang="en"] main > div {
+  font-family: var(--font);
+  text-align: left;
+}
+
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4 {
+  font-family: var(--font);
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+html[lang="en"] .text-center,
+html[lang="en"] .section-head,
+html[lang="en"] .section-head p {
+  text-align: left !important;
+}
+
+html[lang="en"] .section-how .section-head,
+html[lang="en"] .why .section-head {
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+html[lang="en"] .section-how .section-head h2,
+html[lang="en"] .section-how .section-head p,
+html[lang="en"] .why .section-head h2,
+html[lang="en"] .why .section-head p {
+  text-align: center !important;
+}
+
+html[lang="en"] .hero {
+  min-height: 0;
+  height: auto;
+  padding-top: clamp(145px, 13vw, 170px) !important;
+  padding-bottom: 110px !important;
+  text-align: left;
+}
+
+html[lang="en"] .hero__bg-layer {
+  z-index: 0 !important;
+  transform: scale(1.08) !important;
+}
+
+html[lang="en"] .hero__bg-layer.is-active {
+  transform: scale(1) !important;
+}
+
+html[lang="en"] .hero__bg-layer::before {
+  content: "" !important;
+  z-index: 1;
+  background:
+    linear-gradient(115deg,
+      rgba(7, 24, 44, 0.10) 30%,
+      rgba(11, 100, 118, 0.70) 50%,
+      rgba(8, 25, 44, 0.95) 100%),
+    linear-gradient(0deg, rgba(7, 24, 44, 0.30), transparent 100%);
+  transform: scaleX(-1);
+}
+
+html[lang="en"] .hero__bg-art {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+  z-index: 0;
+}
+
+html[lang="en"] .hero__bg-layer.is-active .hero__bg-art {
+  animation: none;
+}
+
+html[lang="en"] .hero-slide-container {
+  min-height: 0;
+  grid-template-rows: auto auto auto;
+  gap: 16px;
+}
+
+html[lang="en"] .hero .hero-eyebrow {
+  justify-self: start;
+  margin: 0 !important;
+  max-width: 100%;
+  white-space: normal;
+}
+
+html[lang="en"] .hero h1 {
+  height: auto;
+  max-width: 54rem !important;
+  margin: 0 !important;
+  text-align: left;
+  line-height: 1.2 !important;
+}
+
+html[lang="en"] .hero__intro,
+html[lang="en"] .hero .hero__intro p {
+  height: auto;
+  max-width: 48rem !important;
+  margin: 0 !important;
+  overflow: visible;
+  text-align: left;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+html[lang="en"] .hero__actions-wrapper {
+  margin-top: 24px !important;
+  align-items: flex-start !important;
+}
+
+html[lang="en"] .hero__actions {
+  justify-content: flex-start;
+}
+
+html[lang="en"] .stats li {
+  border-left: 0 !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: left !important;
+}
+
+html[lang="en"] .stats li:last-child {
+  border-right: 0;
+}
+
+html[lang="en"] .stats li div {
+  justify-content: flex-start;
+}
+
+html[lang="en"] .svc-bento-title-box,
+html[lang="en"] .svc-bento-card,
+html[lang="en"] .why__item,
+html[lang="en"] .why__gov,
+html[lang="en"] .essay-card__body {
+  text-align: left;
+}
+
+html[lang="en"] .journey-steps {
+  direction: ltr;
+}
+
+html[lang="en"] .journey-wave {
+  transform: scaleX(-1);
+}
+
+html[lang="en"] .journey-badge {
+  inset-inline-start: 4px;
+  inset-inline-end: auto;
+}
+
+html[lang="en"] .about-page {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .about-page .hero__bg-layer {
+  z-index: 0 !important;
+}
+
+html[lang="en"] .about-page .about-hero-content,
+html[lang="en"] .about-page .about-hero-content *,
+html[lang="en"] .about-page .about-hero-paragraphs,
+html[lang="en"] .about-page .about-hero-paragraphs p,
+html[lang="en"] .about-page .numbers-light__head,
+html[lang="en"] .about-page .number-stage-content,
+html[lang="en"] .about-page .number-stage-footer,
+html[lang="en"] .about-page .about-ops-section,
+html[lang="en"] .about-page .about-scope-section,
+html[lang="en"] .about-page .scope-matrix-box {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .about-page .about-nav ul {
+  justify-content: flex-start;
+  direction: ltr;
+}
+
+html[lang="en"] .about-page .number-rect-item {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .about-page .number-rect-item:hover,
+html[lang="en"] .about-page .number-rect-item:focus-visible,
+html[lang="en"] .about-page .number-rect-item.is-active {
+  transform: translateX(5px);
+}
+
+html[lang="en"] .page-hero {
+  isolation: isolate;
+  background: none !important;
+}
+
+html[lang="en"] .page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(115deg,
+      rgba(7, 24, 44, 0.90) 30%,
+      rgba(11, 100, 118, 0.65) 50%,
+      rgba(8, 25, 44, 0.95) 100%),
+    url('/Images/HeroSvc.png') center / cover no-repeat;
+  transform: scaleX(-1);
+  pointer-events: none;
+}
+
+html[lang="en"] .page-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+html[lang="en"] .svc-block__inner {
+  direction: ltr;
+}
+
+html[lang="en"] .svc-block__head,
+html[lang="en"] .svc-block__head h2,
+html[lang="en"] .svc-block__tag,
+html[lang="en"] .svc-block__body,
+html[lang="en"] .svc-block__lead,
+html[lang="en"] .svc-block__body .includes {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .svc-block__meta {
+  direction: ltr;
+}
+
+html[lang="en"] .svc-block__body {
+  margin-inline: 0 auto;
+}
+
+html[lang="en"] .svc-blocks > .svc-block:nth-child(even) .svc-block__head h2,
+html[lang="en"] .svc-blocks > .svc-block:nth-child(even) .svc-block__tag {
+  color: #fff;
+}
+
+html[lang="en"] .site-header .navbar-pill {
+  gap: 16px;
+}
+
+html[lang="en"] .navbar-nav {
+  gap: clamp(10px, 1.15vw, 18px) !important;
+}
+
+html[lang="en"] .site-header .navbar-collapse > .d-flex {
+  flex-shrink: 0;
+}
+
+html[lang="en"] .site-header .btn-pill-cta {
+  padding: 6px 12px 6px 12px !important;
+  white-space: nowrap;
+}
+
+html[lang="en"] .btn-pill-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 6px 6px 6px 18px !important;
+}
+
+html[lang="en"] .btn-pill-cta:hover .btn-pill-circle {
+  transform: translate(2px, -2px);
+}
+
+html[lang="en"] .cta__actions .btn,
+html[lang="en"] .page-hero__actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+html[lang="en"] .link-more::after {
+  content: "\2192";
+  margin-inline-start: 8px;
+  margin-inline-end: 0;
+}
+
+html[lang="en"] .link-more:hover::after {
+  transform: translateX(4px);
+}
+
+html[lang="en"] .language-switcher {
+  flex-shrink: 0;
+  border-color: rgba(7, 139, 134, 0.28);
+  background: #eaf5f3;
+}
+
+html[lang="en"] .language-switcher a.is-active {
+  background: var(--teal);
+}
+
+@media (max-width: 991.98px) {
+  html[lang="en"] .hero {
+    padding-top: clamp(112px, 27vw, 138px) !important;
+    padding-bottom: 46px !important;
+  }
+
+  html[lang="en"] .hero__bg-layer {
+    background-position: center !important;
+  }
+
+  html[lang="en"] .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html[lang="en"] .stats li:nth-child(even) {
+    border-right: 0;
+  }
+
+  html[lang="en"] .navbar-collapse,
+  html[lang="en"] .navbar-nav,
+  html[lang="en"] .navbar-nav .nav-item,
+  html[lang="en"] .navbar-nav .ms-nav-item,
+  html[lang="en"] .nav-link,
+  html[lang="en"] .dropdown-custom,
+  html[lang="en"] .ms-dropdown-menu,
+  html[lang="en"] .ms-dropdown-item {
+    text-align: left !important;
+  }
+
+  html[lang="en"] .navbar-nav {
+    align-items: flex-start !important;
+  }
+
+  html[lang="en"] .navbar-collapse .btn-pill-cta {
+    width: auto !important;
+    margin-top: 8px !important;
+  }
+
+  html[lang="en"] .svc-block__body {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  html[lang="en"] .hero {
+    padding-top: clamp(110px, 30vw, 138px) !important;
+  }
+
+  html[lang="en"] .hero h1 {
+    font-size: clamp(1.8rem, 7vw, 2.25rem) !important;
+  }
+
+  html[lang="en"] .about-page .about-hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  html[lang="en"] .stats li {
+    border-right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}

@@ -63,7 +63,8 @@ export default function TeamSection() {
   // Auto-scroll effect (paused on hover)
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || showAll || !sliderRef.current) return;
+    const touchViewport = window.matchMedia('(max-width: 767.98px)').matches;
+    if (reduceMotion || touchViewport || showAll || !sliderRef.current) return;
 
     const viewport = sliderRef.current;
     let autoSlide = setInterval(() => {

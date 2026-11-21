@@ -136,7 +136,8 @@ export default function Home() {
     // Auto-slide essays effect
     useEffect(() => {
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduceMotion || !essaysViewportRef.current) return;
+        const touchViewport = window.matchMedia('(max-width: 767.98px)').matches;
+        if (reduceMotion || touchViewport || !essaysViewportRef.current) return;
 
         const viewport = essaysViewportRef.current;
         let autoSlide = setInterval(() => {
@@ -456,6 +457,16 @@ export default function Home() {
                                         key={index}
                                         className={`sector-item ${activeSector === index ? 'active' : ''}`}
                                         onMouseEnter={() => setActiveSector(index)}
+                                        onClick={() => setActiveSector(index)}
+                                        onKeyDown={(event) => {
+                                            if (event.key === 'Enter' || event.key === ' ') {
+                                                event.preventDefault();
+                                                setActiveSector(index);
+                                            }
+                                        }}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-pressed={activeSector === index}
                                     >
                                         <div className="sector-item__info">
                                             <h3>{sec.title}</h3>

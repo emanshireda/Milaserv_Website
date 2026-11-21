@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
 
@@ -23,6 +24,27 @@ const SECTORS_LINKS = [
 ];
 
 export default function Navbar() {
+  const { pathname } = useLocation();
+  const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
+  const base = isEnglish ? '/en' : '';
+  const arabicPath = isEnglish
+    ? pathname === '/en/services'
+      ? '/services'
+      : pathname === '/en/about'
+        ? '/about'
+        : pathname === '/en/contact'
+          ? '/contact'
+          : '/'
+    : pathname;
+  const englishPath = !isEnglish
+    ? pathname === '/services'
+      ? '/en/services'
+      : pathname === '/about'
+        ? '/en/about'
+        : pathname === '/contact'
+          ? '/en/contact'
+          : '/en'
+    : pathname;
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -143,7 +165,7 @@ export default function Navbar() {
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-pill">
             {/* Brand / Logo */}
-            <Link className="brand" to="/#top" onClick={closeAll}>
+            <Link className="brand" to={`${base}/#top`} onClick={closeAll}>
               <img src={publicAsset('Images/Logo.png')} alt="MilaServ" height="42" width="42" />
               <span>Milaserv</span>
             </Link>
@@ -154,7 +176,7 @@ export default function Navbar() {
               type="button"
               aria-controls="mainNav"
               aria-expanded={mobileOpen}
-              aria-label="فتح القائمة"
+              aria-label={isEnglish ? 'Open menu' : 'فتح القائمة'}
               onClick={() => setMobileOpen((prev) => !prev)}
             >
               <span className="navbar-toggler-icon"></span>
@@ -164,7 +186,7 @@ export default function Navbar() {
             <div className={`collapse navbar-collapse ${mobileOpen ? 'show' : ''}`} id="mainNav">
               <ul className="navbar-nav mx-lg-auto align-lg-items-center gap-2 gap-lg-4">
                 
-                {/* Dropdown 1: خدماتنا */}
+                {/* Dropdown 1: services */}
                 <li className={`ms-nav-item ${openDropdown === 'services' ? 'is-open' : ''}`}>
                   <button
                     className="btn nav-link dropdown-custom p-0 border-0 bg-transparent"
@@ -172,12 +194,20 @@ export default function Navbar() {
                     aria-expanded={openDropdown === 'services'}
                     onClick={() => toggleDropdown('services')}
                   >
-                    <span className="link-text">خدماتنا</span>
+                    <span className="link-text">{isEnglish ? 'Services' : 'خدماتنا'}</span>
                     <i className="bi bi-chevron-down nav-chevron" aria-hidden="true"></i>
                   </button>
                   {openDropdown === 'services' && (
                     <ul className="ms-dropdown-menu" role="menu">
-                      {SERVICES_LINKS.map((item) => (
+                      {(isEnglish ? [
+                        { to: '/en/services#svc-1', label: 'Customer Service & Contact Centres' },
+                        { to: '/en/services#svc-2', label: 'Medical Insurance Administration' },
+                        { to: '/en/services#svc-3', label: 'Customer Relationships & Loyalty' },
+                        { to: '/en/services#svc-4', label: 'Telesales Teams' },
+                        { to: '/en/services#svc-5', label: 'E-commerce Operations' },
+                        { to: '/en/services#svc-6', label: 'Digital Marketing' },
+                        { to: '/en/services#svc-7', label: 'Telehealth Operations & Support' },
+                      ] : SERVICES_LINKS).map((item) => (
                         <li key={item.to} role="none">
                           <Link
                             className="ms-dropdown-item"
@@ -202,12 +232,20 @@ export default function Navbar() {
                     aria-expanded={openDropdown === 'sectors'}
                     onClick={() => toggleDropdown('sectors')}
                   >
-                    <span className="link-text">القطاعات</span>
+                    <span className="link-text">{isEnglish ? 'Sectors' : 'القطاعات'}</span>
                     <i className="bi bi-chevron-down nav-chevron" aria-hidden="true"></i>
                   </button>
                   {openDropdown === 'sectors' && (
                     <ul className="ms-dropdown-menu" role="menu">
-                      {SECTORS_LINKS.map((item, idx) => (
+                      {(isEnglish ? [
+                        { to: '/en/#sectors', label: 'Hospitals' },
+                        { to: '/en/#sectors', label: 'Medical Centres' },
+                        { to: '/en/#sectors', label: 'Private Clinics' },
+                        { to: '/en/#sectors', label: 'Medical Laboratories' },
+                        { to: '/en/#sectors', label: 'Pharmacies' },
+                        { to: '/en/#sectors', label: 'Digital Health Platforms' },
+                        { to: '/en/#sectors', label: 'Telehealth Providers' },
+                      ] : SECTORS_LINKS).map((item, idx) => (
                         <li key={idx} role="none">
                           <Link
                             className="ms-dropdown-item"
@@ -225,26 +263,51 @@ export default function Navbar() {
 
                 {/* Regular Link: عن ميلاسيرف*/}
                 <li className="nav-item">
-                  <Link className="nav-link" to="#" onClick={closeAll}>
-                   عن ملاسيرف
+                  <Link className="nav-link" to={`${base}/about`} onClick={closeAll}>
+                    {isEnglish ? 'About Us' : 'عن ميلاسيرف'}
                   </Link>
                 </li>
 
                  {/* Regular Link: المدونة*/}
                 <li className="nav-item">
                   <Link className="nav-link" to="#" onClick={closeAll}>
-                   المدونة
+                   {isEnglish ? 'Insights' : 'المدونة'}
+                  </Link>
+                </li>
+
+              {/* Regular Link: career*/}
+                <li className="nav-item">
+                  <Link className="nav-link" to="#" onClick={closeAll}>
+                   Career
                   </Link>
                 </li>
               </ul>
 
               {/* Pill Action Button */}
+              <div className="d-flex align-items-center gap-2 ms-lg-2">
               <a href="#contact" className="btn btn-brand btn-pill-cta" onClick={closeAll}>
-                <span>احجز استشارة</span>
+                <span>{isEnglish ? 'Book a Consultation' : 'احجز استشارة'}</span>
                 <span className="btn-pill-circle" aria-hidden="true">
-                  <i className="bi bi-arrow-up-left"></i>
+                  <i className={`bi ${isEnglish ? 'bi-arrow-up-right' : 'bi-arrow-up-left'}`}></i>
                 </span>
               </a>
+              <div className="language-switcher" aria-label="Language">
+                <Link
+                  to={arabicPath}
+                  className={!isEnglish ? 'is-active' : ''}
+                  onClick={closeAll}
+                >
+                  عربي
+                </Link>
+                <Link
+                  to={englishPath}
+                  className={isEnglish ? 'is-active' : ''}
+                  onClick={closeAll}
+                >
+                  EN
+                </Link>
+              </div>
+              </div>
             </div>
           </nav>
         </div>

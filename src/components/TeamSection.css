@@ -135,11 +135,13 @@
   overflow-y: visible;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-top: 60px;
   /* Extra bottom padding prevents overflow-x from clipping card shadows */
   padding-bottom: 52px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .team-viewport::-webkit-scrollbar {

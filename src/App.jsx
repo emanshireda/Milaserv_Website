@@ -5,11 +5,21 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import About from './pages/About';
 import ContactForm from './components/ContactForm';
-import { useSiteEffects } from './utils/useSiteEffects';
+import HomeEn from './pages/HomeEn';
+import ServicesEn from './pages/ServicesEn';
+import AboutEn from './pages/AboutEn';
 
 function Layout() {
   const { pathname, hash } = useLocation();
+  const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
+  const isContactPage = pathname === '/contact' || pathname === '/en/contact';
+
+  useEffect(() => {
+    document.documentElement.lang = isEnglish ? 'en' : 'ar';
+    document.documentElement.dir = isEnglish ? 'ltr' : 'rtl';
+  }, [isEnglish]);
 
   // 1. Handle route & hash scrolling
   useEffect(() => {
@@ -55,11 +65,11 @@ function Layout() {
 
   return (
     <>
-      <a className="skip-link" href="#main">تخطي إلى المحتوى</a>
+      <a className="skip-link" href="#main">{isEnglish ? 'Skip to content' : 'تخطي إلى المحتوى'}</a>
       <Navbar />
       <main id="main" tabIndex="-1">
         <Outlet />
-        <FinalCTA />
+        {!isContactPage && <FinalCTA />}
       </main>
       <Footer />
     </>
@@ -74,6 +84,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/en" element={<HomeEn />} />
+          <Route path="/en/services" element={<ServicesEn />} />
+          <Route path="/en/contact" element={<ContactForm />} />
+          <Route path="/en/about" element={<AboutEn />} />
         </Route>
       </Routes>
     </BrowserRouter>
