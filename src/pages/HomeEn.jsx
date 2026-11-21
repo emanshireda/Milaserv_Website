@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
+import PartnerLogos from '../components/PartnerLogos';
 import TeamSection from '../components/TeamSection';
 
 const HEROES = [
@@ -130,6 +131,7 @@ export default function HomeEn() {
             </div>
           </div>
         </div>
+        <PartnerLogos isEnglish />
       </section>
 
       <div className="stats-wrap">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
+import PartnerLogos from '../components/PartnerLogos';
 import TeamSection from '../components/TeamSection';
 
 const HERO_BANNERS = [
@@ -25,13 +26,6 @@ const HERO_BANNERS = [
         titleLines: ['إدارة العمليات التأمينية', 'والموافقات الطبية'],
         description: 'نضمن سرعة التحقق من أهلية التأمين والحصول على الموافقات ومتابعة المطالبات للحد من حالات الرفض.',
     },
-];
-
-const partners = [
-  { name: 'المتحدة', logo: publicAsset('Images/Logo11.webp') },
-  { name: 'شمس', logo: publicAsset('Images/Logo4.svg') },
-  { name: 'القدس', logo: publicAsset('Images/Logo2.png') },
-  { name: 'اجورا', logo: publicAsset('Images/Logo3.webp') },
 ];
 
 // Reusable Counter Component for Metrics
@@ -110,8 +104,6 @@ export default function Home() {
         { title: "منصات الرعاية الصحية", desc: "فرق متخصصة تدعم خدمة المستخدمين وتحسين تجربتهم.", img: publicAsset('Images/platforms.jpg') },
         { title: "مزودو خدمات الطب الاتصالي", desc: "فرق متخصصة تدعم الاستشارات الافتراضية وجدولة المواعيد والفرز الطبي.", img: publicAsset('Images/healthcare.jpg') }
     ];
-
-    const extendedPartners = [...partners, ...partners, ...partners];
 
     // 2. Essays Carousel Ref & Scroll Logic
     const essaysViewportRef = useRef(null);
@@ -255,29 +247,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="hero-partners-bar" dir="rtl">
-
-        <div className="hero-marquee">
-          <div className="hero-marquee__track">
-            {extendedPartners.map((partner, index) => (
-              <div className="hero-partner-pill" key={index}>
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="hero-partner-pill__logo"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
-                />
-                <span className="hero-partner-pill__fallback" style={{ display: 'none' }}>
-                  {partner.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+                <PartnerLogos />
 
             </section>
 
