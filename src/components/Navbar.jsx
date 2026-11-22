@@ -13,20 +13,21 @@ const SERVICES_LINKS = [
   { to: '/services#svc-7', label: 'الاستشارات الطبية عن بُعد' },
 ];
 
-const SECTORS_LINKS = [
-  { to: '/#sectors', label: 'المستشفيات' },
-  { to: '/#sectors', label: 'المجمعات الطبية' },
-  { to: '/#sectors', label: 'العيادات الخاصة' },
-  { to: '/#sectors', label: 'المختبرات الطبية' },
-  { to: '/#sectors', label: 'الصيدليات' },
-  { to: '/#sectors', label: 'منصات الرعاية الصحية' },
-  { to: '/#sectors', label: 'مزودو خدمات الطب الاتصالي' },
+const SECTORS_LINKS_AR = [
+  { to: '/sectors#hospitals', label: 'المستشفيات' },
+  { to: '/sectors#multi-branch', label: 'المجمعات الطبية' },
+  { to: '/sectors#clinics', label: 'العيادات الخاصة' },
+  { to: '/sectors#labs', label: 'المختبرات الطبية' },
+  { to: '/sectors#pharmacies', label: 'الصيدليات' },
+  { to: '/sectors#healthtech', label: 'منصات الرعاية الصحية' },
+  { to: '/sectors#telemedicine', label: 'مزودو خدمات الطب الاتصالي' },
 ];
 
 export default function Navbar() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
   const base = isEnglish ? '/en' : '';
+  const isFaqPage = pathname === '/faq' || pathname === '/en/faq';
   const arabicPath = isEnglish
     ? pathname === '/en/services'
       ? '/services'
@@ -34,7 +35,11 @@ export default function Navbar() {
         ? '/about'
         : pathname === '/en/contact'
           ? '/contact'
-          : '/'
+          : pathname === '/en/faq'
+            ? '/faq'
+            : pathname === '/en/sectors'
+              ? `/sectors${hash}`
+              : '/'
     : pathname;
   const englishPath = !isEnglish
     ? pathname === '/services'
@@ -43,7 +48,11 @@ export default function Navbar() {
         ? '/en/about'
         : pathname === '/contact'
           ? '/en/contact'
-          : '/en'
+          : pathname === '/faq'
+            ? '/en/faq'
+            : pathname === '/sectors'
+              ? `/en/sectors${hash}`
+              : '/en'
     : pathname;
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -238,15 +247,15 @@ export default function Navbar() {
                   {openDropdown === 'sectors' && (
                     <ul className="ms-dropdown-menu" role="menu">
                       {(isEnglish ? [
-                        { to: '/en/#sectors', label: 'Hospitals' },
-                        { to: '/en/#sectors', label: 'Medical Centres' },
-                        { to: '/en/#sectors', label: 'Private Clinics' },
-                        { to: '/en/#sectors', label: 'Medical Laboratories' },
-                        { to: '/en/#sectors', label: 'Pharmacies' },
-                        { to: '/en/#sectors', label: 'Digital Health Platforms' },
-                        { to: '/en/#sectors', label: 'Telehealth Providers' },
-                      ] : SECTORS_LINKS).map((item, idx) => (
-                        <li key={idx} role="none">
+                        { to: '/en/sectors#hospitals', label: 'Hospitals' },
+                        { to: '/en/sectors#multi-branch', label: 'Medical Centres' },
+                        { to: '/en/sectors#clinics', label: 'Private Clinics' },
+                        { to: '/en/sectors#labs', label: 'Medical Laboratories' },
+                        { to: '/en/sectors#pharmacies', label: 'Pharmacies' },
+                        { to: '/en/sectors#healthtech', label: 'Digital Health Platforms' },
+                        { to: '/en/sectors#telemedicine', label: 'Telehealth Providers' },
+                      ] : SECTORS_LINKS_AR).map((item) => (
+                        <li key={item.to} role="none">
                           <Link
                             className="ms-dropdown-item"
                             to={item.to}
@@ -271,33 +280,26 @@ export default function Navbar() {
                 {/* Regular Link: المدونة*/}
                 <li className="nav-item">
                   <Link className="nav-link" to={`${base}/#essays`} onClick={closeAll}>
-                    {isEnglish ? 'Insights' : 'المدونة'}
-                  </Link>
-                </li>
-
-                {/* Regular Link: career*/}
-                <li className="nav-item">
-                  <Link className="nav-link" to="#" onClick={closeAll}>
-                   {isEnglish ? 'Careers' : 'الوظائف'}
+                    {isEnglish ? 'Blog' : 'المدونة'}
                   </Link>
                 </li>
 
                 {/* Regular Link: الأسئلة الشائعة*/}
                 <li className="nav-item">
-                  <Link className="nav-link" to="#" onClick={closeAll}>
-                    {isEnglish ? 'Frequently Asked Questions' : 'الأسئلة الشائعة'}
+                  <Link className="nav-link" to={`${base}/faq`} onClick={closeAll}>
+                    {isEnglish ? 'FAQs' : 'الأسئلة الشائعة'}
                   </Link>
                 </li>
               </ul>
 
               {/* Pill Action Button */}
               <div className="d-flex align-items-center gap-2 ms-xl-2">
-                <a href="#contact" className="btn btn-brand btn-pill-cta" onClick={closeAll}>
+                <Link to={isFaqPage ? `${base}/contact` : '#contact'} className="btn btn-brand btn-pill-cta" onClick={closeAll}>
                   <span>{isEnglish ? 'Book a Consultation' : 'احجز استشارة'}</span>
                   <span className="btn-pill-circle" aria-hidden="true">
                     <i className={`bi ${isEnglish ? 'bi-arrow-up-right' : 'bi-arrow-up-left'}`}></i>
                   </span>
-                </a>
+                </Link>
                 <div className="language-switcher" aria-label="Language">
                   <Link
                     to={arabicPath}

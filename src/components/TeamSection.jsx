@@ -1,12 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
 import './TeamSection.css';
 
 const teamMembers = [
   {
-    name: '[اسم الرئيس التنفيذي]',
+    name: 'د/ مصطفى سالم',
     role: 'الرئيس التنفيذي (CEO)',
-    img: publicAsset('Images/team/ceo.png'),
+    img: publicAsset('Images/Mostafa Sleem.png'),
   },
   {
     name: '[اسم رئيس العمليات]',
@@ -14,9 +15,9 @@ const teamMembers = [
     img: publicAsset('Images/team/coo.png'),
   },
   {
-    name: '[اسم الرئيس المالي]',
+    name: 'أ/ احمد سمير',
     role: 'الرئيس المالي (CFO)',
-    img: publicAsset('Images/team/cfo.png'),
+    img: publicAsset('Images/Ahmed Samir.png'),
   },
   {
     name: '[اسم مدير الجودة]',
@@ -24,14 +25,14 @@ const teamMembers = [
     img: publicAsset('Images/team/qa.png'),
   },
   {
-    name: '[اسم مدير الموارد البشرية]',
+    name: 'أ/ أسامة الجندي',
     role: 'مدير الموارد البشرية (Human Resource Manager)',
-    img: publicAsset('Images/team/hr.png'),
+    img: publicAsset('Images/Osama Elgendy.png'),
   },
   {
-    name: '[اسم المدير التجاري]',
+    name: 'م/ محمد عزيز',
     role: 'المدير التجاري (Commercial Manager)',
-    img: publicAsset('Images/team/commercial.png'),
+    img: publicAsset('Images/Mohamed Aziz.png'),
   },
 ];
 
@@ -46,18 +47,17 @@ const englishTeamMembers = [
 
 export default function TeamSection({ isEnglish = false }) {
   const sliderRef = useRef(null);
-  const [showAll, setShowAll] = useState(false);
   const members = isEnglish
     ? teamMembers.map((member, index) => ({ ...member, ...englishTeamMembers[index] }))
     : teamMembers;
 
   // Start at the first card in each reading direction.
   useEffect(() => {
-    if (!showAll && sliderRef.current) {
+    if (sliderRef.current) {
       const viewport = sliderRef.current;
       viewport.scrollLeft = isEnglish ? 0 : viewport.scrollWidth;
     }
-  }, [isEnglish, showAll]);
+  }, [isEnglish]);
 
   const scrollTeam = (direction) => {
     if (!sliderRef.current) return;
@@ -76,7 +76,7 @@ export default function TeamSection({ isEnglish = false }) {
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const touchViewport = window.matchMedia('(max-width: 767.98px)').matches;
-    if (reduceMotion || touchViewport || showAll || !sliderRef.current) return;
+    if (reduceMotion || touchViewport || !sliderRef.current) return;
 
     const viewport = sliderRef.current;
     let autoSlide = setInterval(() => {
@@ -116,7 +116,7 @@ export default function TeamSection({ isEnglish = false }) {
       viewport.removeEventListener('mouseenter', pause);
       viewport.removeEventListener('mouseleave', resume);
     };
-  }, [isEnglish, showAll]);
+  }, [isEnglish]);
 
   return (
     <section className="section team-section" id="team" dir={isEnglish ? 'ltr' : 'rtl'}>
@@ -130,41 +130,37 @@ export default function TeamSection({ isEnglish = false }) {
           </div>
 
           <div className="team-header__controls">
-            {!showAll && (
-              <div className="team-nav">
-                <button
-                  type="button"
-                  className="team-arrow"
-                  onClick={() => scrollTeam('prev')}
-                  aria-label={isEnglish ? 'Previous' : 'السابق'}
-                >
-                  <i className={`bi ${isEnglish ? 'bi-arrow-left' : 'bi-arrow-right'}`}></i>
-                </button>
-                <button
-                  type="button"
-                  className="team-arrow"
-                  onClick={() => scrollTeam('next')}
-                  aria-label={isEnglish ? 'Next' : 'التالي'}
-                >
-                  <i className={`bi ${isEnglish ? 'bi-arrow-right' : 'bi-arrow-left'}`}></i>
-                </button>
-              </div>
-            )}
+            <div className="team-nav">
+              <button
+                type="button"
+                className="team-arrow"
+                onClick={() => scrollTeam('prev')}
+                aria-label={isEnglish ? 'Previous' : 'السابق'}
+              >
+                <i className={`bi ${isEnglish ? 'bi-arrow-left' : 'bi-arrow-right'}`}></i>
+              </button>
+              <button
+                type="button"
+                className="team-arrow"
+                onClick={() => scrollTeam('next')}
+                aria-label={isEnglish ? 'Next' : 'التالي'}
+              >
+                <i className={`bi ${isEnglish ? 'bi-arrow-right' : 'bi-arrow-left'}`}></i>
+              </button>
+            </div>
 
-            <button
-              type="button"
+            <Link
               className="btn btn-outline-navy team-more-btn"
-              onClick={() => setShowAll(!showAll)}
+              to={isEnglish ? '/en/about#aboutteamlist' : '/about#aboutteamlist'}
             >
-              <span>{showAll ? (isEnglish ? 'Show slider' : 'عرض الشريط') : (isEnglish ? 'View more' : 'عرض المزيد')}</span>
-              <i className={`bi ${showAll ? 'bi-grid' : 'bi-arrow-up-left'}`}></i>
-            </button>
+              <span>{isEnglish ? 'View full team' : 'عرض الفريق كاملًا'}</span>
+              <i className={`bi ${isEnglish ? 'bi-arrow-up-right' : 'bi-arrow-up-left'}`}></i>
+            </Link>
           </div>
         </div>
 
-        {/* Dynamic View: Horizontal Slider OR Expanded Full Grid */}
-        {showAll ? (
-          <div className="team-full-grid animate-fade-in">
+        <div className="team-viewport" ref={sliderRef} data-reveal>
+          <div className="team-track">
             {members.map((member, index) => (
               <article className="team-card" key={index}>
                 <div className="team-card__bg" aria-hidden="true"></div>
@@ -183,29 +179,7 @@ export default function TeamSection({ isEnglish = false }) {
               </article>
             ))}
           </div>
-        ) : (
-          <div className="team-viewport" ref={sliderRef} data-reveal>
-            <div className="team-track">
-              {members.map((member, index) => (
-                <article className="team-card" key={index}>
-                  <div className="team-card__bg" aria-hidden="true"></div>
-                  <div className="team-card__portrait-wrap">
-                    <img
-                      src={member.img}
-                      alt={member.name}
-                      className="team-card__portrait"
-                      onError={(e) => { e.target.style.display = 'none'; }}
-                    />
-                  </div>
-                  <div className="team-card__overlay">
-                    <h3 className="team-card__name">{member.name}</h3>
-                    <span className="team-card__role">{member.role}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );

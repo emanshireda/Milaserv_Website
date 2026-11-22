@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
+import AboutTeamList from '../components/AboutTeamList';
 
 const STATS = [
   {
@@ -63,7 +64,7 @@ const ABOUT_NAV = [
   { id: 'numbers', icon: 'bi-bar-chart-line', label: 'ميلاسيرف بالأرقام' },
   { id: 'operating-model', icon: 'bi-gear', label: 'نموذج التشغيل' },
   { id: 'healthcare-scope', icon: 'bi-hospital', label: 'نطاق التغطية' },
-  { id: 'team', icon: 'bi-people', label: 'فريق القيادة' },
+  { id: 'aboutteamlist', icon: 'bi-people', label: 'فريق القيادة' },
 ];
 
 const OPS_PILLARS = [
@@ -107,48 +108,6 @@ const SUPPORT_SERVICES = [
   'دعم تشغيل الاستشارات الطبية عن بُعد',
 ];
 
-const TEAM_MEMBERS = [
-  {
-    id: 'ceo',
-    photo: publicAsset('Images/team-1.jpg'),
-    name: '[اسم الرئيس التنفيذي]',
-    role: 'الرئيس التنفيذي (CEO)',
-    bio: 'قيادة الرؤية الاستراتيجية وبناء الشراكات التشغيلية مع المستشفيات والمجمعات الطبية في المملكة العربية السعودية ودول الخليج.',
-    details: 'خبرة تتجاوز 15 عامًا في إدارة وتشغيل القطاع الصحي',
-  },
-  {
-    id: 'coo',
-    photo: publicAsset('Images/team-2.jpg'),
-    name: '[اسم رئيس العمليات]',
-    role: 'رئيس العمليات التشغيلية (COO)',
-    bio: 'الإشراف على الفرق المخصصة وإدارة التشغيل اليومي وفق مؤشرات الأداء ومستويات الخدمة المتفق عليها.',
-    details: 'إدارة وتشغيل فرق الرعاية الصحية ومراكز الاتصال الطبي',
-  },
-  {
-    id: 'cfo',
-    photo: publicAsset('Images/team-3.jpg'),
-    name: '[اسم الرئيس المالي]',
-    role: 'الرئيس المالي (CFO)',
-    bio: 'التخطيط المالي وحوكمة الموارد وتطوير نماذج التشغيل المرنة بما يضمن استدامة النمو وكفاءة التكاليف.',
-    details: 'خبرة في الإدارة المالية وتخطيط الأعمال للخدمات الصحية',
-  },
-  {
-    id: 'qa',
-    photo: publicAsset('Images/team-4.jpg'),
-    name: '[اسم مدير الجودة]',
-    role: 'مدير ضمان الجودة (Quality Assurance Manager)',
-    bio: 'مراقبة جودة التفاعلات وتحليل البيانات وإعداد التقارير الدورية لضمان الالتزام الكامل بمعايير المنشأة.',
-    details: 'تطبيق معايير الجودة ومؤشرات رضا العملاء (CSAT & SLA)',
-  },
-  {
-    id: 'hr',
-    photo: publicAsset('Images/team-5.jpg'),
-    name: '[اسم مدير الموارد البشرية]',
-    role: 'مدير الموارد البشرية (HR Manager)',
-    bio: 'استقطاب الكفاءات الطبية والإدارية وتدريبها وتأهيلها للعمل كامتداد متكامل لفرق عملائنا.',
-    details: 'بناء وتأهيل أكثر من 300 متخصص في العمليات الصحية',
-  },
-];
 
 export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -416,41 +375,9 @@ export default function About() {
       </section>
 
       {/* ================= 4. TEAM SECTION (Dark Portrait Cards — Full Grid, No Slider) ================= */}
-      <section className="section about-leadership-section" id="team">
-        <div className="container">
-          <div className="about-leadership-head" data-reveal>
-            <span className="about-eyebrow">فريق القيادة</span>
-            <h2>قيادات تقود التميز التشغيلي</h2>
-            <p>نخبة من الخبراء والمتخصصين لإدارة وتشغيل خدمات منشأتك الصحية بأعلى معايير الجودة.</p>
-          </div>
 
-          <div className="about-leadership-grid" data-reveal>
-            {TEAM_MEMBERS.map((member) => (
-              <article key={member.id} className="leader-portrait-card">
-                <img
-                  src={member.photo}
-                  alt={member.name}
-                  className="leader-portrait-card__img"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-                <div className="leader-portrait-card__overlay" aria-hidden="true" />
+      <AboutTeamList isEnglish={false} />
 
-                <div className="leader-portrait-card__content">
-                  <h3>{member.name}</h3>
-                  <span className="leader-portrait-card__role">{member.role}</span>
-                  <p className="leader-portrait-card__bio">{member.bio}</p>
-                  <div className="leader-portrait-card__detail">
-                    <i className="bi bi-patch-check" aria-hidden="true" />
-                    <span>{member.details}</span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

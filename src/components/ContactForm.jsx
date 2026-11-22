@@ -78,6 +78,31 @@ export default function ContactForm() {
     }, 300);
   };
 
+  const phoneNumberInput = (
+    <input
+      type="tel"
+      required
+      placeholder="5X XXX XXXX"
+      dir="ltr"
+      className="text-start phone-number-field"
+      value={formData.phone}
+      onChange={(event) => setFormData({ ...formData, phone: event.target.value })}
+    />
+  );
+  const countryCodeSelect = (
+    <select
+      className="country-code-select"
+      value={formData.countryCode}
+      onChange={(event) => setFormData({ ...formData, countryCode: event.target.value })}
+    >
+      <option value="+966 SA">+966 SA</option>
+      <option value="+971 AE">+971 AE</option>
+      <option value="+974 QA">+974 QA</option>
+      <option value="+965 KW">+965 KW</option>
+      <option value="+20 EG">+20 EG</option>
+    </select>
+  );
+
   return (
     <section className="section contact-form-section" id="contact" dir={isEnglish ? 'ltr' : 'rtl'}>
       <div className="container">
@@ -117,14 +142,9 @@ export default function ContactForm() {
               <div className="form-group">
                 <label>{isEnglish ? 'Mobile / WhatsApp Number' : 'رقم الجوال / واتساب'} <span className="required-star">*</span></label>
                 <div className="phone-input-group">
-                  <input type="tel" required placeholder="5X XXX XXXX" dir="ltr" className="text-start phone-number-field" value={formData.phone} onChange={(event) => setFormData({ ...formData, phone: event.target.value })} />
-                  <select className="country-code-select" value={formData.countryCode} onChange={(event) => setFormData({ ...formData, countryCode: event.target.value })}>
-                    <option value="+966 SA">+966 SA</option>
-                    <option value="+971 AE">+971 AE</option>
-                    <option value="+974 QA">+974 QA</option>
-                    <option value="+965 KW">+965 KW</option>
-                    <option value="+20 EG">+20 EG</option>
-                  </select>
+                  {isEnglish
+                    ? <>{countryCodeSelect}{phoneNumberInput}</>
+                    : <>{phoneNumberInput}{countryCodeSelect}</>}
                 </div>
               </div>
 
@@ -157,8 +177,11 @@ export default function ContactForm() {
               </div>
 
               <div className="form-group">
-                <label>{isEnglish ? 'How Can We Help?' : 'كيف يمكننا مساعدتك؟'} <span className="required-star">*</span></label>
-                <textarea rows="4" required placeholder={isEnglish ? 'Tell us about your needs: required roles, systems used, performance indicators, and any compliance requirements.' : 'أخبرنا باحتياجاتك: الأدوار المطلوبة، الأنظمة التي تستخدمها، مؤشرات الأداء، وأي متطلبات امتثال.'} value={formData.message} onChange={(event) => setFormData({ ...formData, message: event.target.value })}></textarea>
+                <label>
+                  {isEnglish ? 'How Can We Help?' : 'كيف يمكننا مساعدتك؟'}{' '}
+                  <span className="optional-tag">{isEnglish ? '(optional)' : '(اختياري)'}</span>
+                </label>
+                <textarea rows="4" placeholder={isEnglish ? 'Tell us about your needs: required roles, systems used, performance indicators, and any compliance requirements.' : 'أخبرنا باحتياجاتك: الأدوار المطلوبة، الأنظمة التي تستخدمها، مؤشرات الأداء، وأي متطلبات امتثال.'} value={formData.message} onChange={(event) => setFormData({ ...formData, message: event.target.value })}></textarea>
               </div>
 
               {submitError && (
@@ -173,8 +196,8 @@ export default function ContactForm() {
                 <label className="privacy-checkbox-label">
                   <input type="checkbox" required checked={formData.agreePrivacy} onChange={(event) => setFormData({ ...formData, agreePrivacy: event.target.checked })} />
                   <span>{isEnglish
-                    ? <>I agree to Milaserv contacting me regarding my request and to the <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</>
-                    : <>أوافق على تواصل ميلاسيرف معي بخصوص طلبي، وعلى <a href="/privacy" target="_blank" rel="noopener noreferrer">سياسة الخصوصية</a>.</>}</span>
+                    ? <>I agree to Milaserv contacting me regarding my request and to the <a href="https://milaserv.com/ar/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</>
+                    : <>أوافق على تواصل ميلاسيرف معي بخصوص طلبي، وعلى <a href="https://milaserv.com/ar/privacy-policy" target="_blank" rel="noopener noreferrer">سياسة الخصوصية</a>.</>}</span>
                 </label>
                 <div className="form-submit-row">
                   <span className="data-security-note">{isEnglish ? 'Your data is secure and will only be used to respond to your request.' : 'بياناتك محفوظة ولن تُستخدم إلا للرد على طلبك.'}</span>

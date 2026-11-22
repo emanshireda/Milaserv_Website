@@ -96,13 +96,13 @@ export default function Home() {
     // 1. Sectors Interactive State
     const [activeSector, setActiveSector] = useState(0);
     const sectorsData = [
-        { title: "المستشفيات", desc: "فرق متخصصة تدير التواصل مع المرضى والمراجعين.", img: publicAsset('Images/hospital.jpg') },
-        { title: "المجمعات الطبية", desc: "فرق تدعم التواصل عبر عيادات المجمع وأقسامه المختلفة.", img: publicAsset('Images/medical center.jpg') },
-        { title: "العيادات الخاصة", desc: "دعم يخفف العبء التشغيلي عن فريق العيادة.", img: publicAsset('Images/Clinic.webp') },
-        { title: "المختبرات الطبية", desc: "تواصل منظم مع مراجعي المعمل ومتابعة استفساراتهم.", img: publicAsset('Images/lab.jpg') },
-        { title: "الصيدليات", desc: "دعم تواصل الصيدلية مع عملائها ومتجرها الإلكتروني.", img: publicAsset('Images/Phramcy.jpg') },
-        { title: "منصات الرعاية الصحية", desc: "فرق متخصصة تدعم خدمة المستخدمين وتحسين تجربتهم.", img: publicAsset('Images/platforms.jpg') },
-        { title: "مزودو خدمات الطب الاتصالي", desc: "فرق متخصصة تدعم الاستشارات الافتراضية وجدولة المواعيد والفرز الطبي.", img: publicAsset('Images/healthcare.jpg') }
+        { id: 'hospitals', title: "المستشفيات", desc: "فرق متخصصة تدير التواصل مع المرضى والمراجعين.", img: publicAsset('Images/hospital.jpg') },
+        { id: 'multi-branch', title: "المجمعات الطبية", desc: "فرق تدعم التواصل عبر عيادات المجمع وأقسامه المختلفة.", img: publicAsset('Images/medical center.jpg') },
+        { id: 'clinics', title: "العيادات الخاصة", desc: "دعم يخفف العبء التشغيلي عن فريق العيادة.", img: publicAsset('Images/Clinic.webp') },
+        { id: 'labs', title: "المختبرات الطبية", desc: "تواصل منظم مع مراجعي المعمل ومتابعة استفساراتهم.", img: publicAsset('Images/lab.jpg') },
+        { id: 'pharmacies', title: "الصيدليات", desc: "دعم تواصل الصيدلية مع عملائها ومتجرها الإلكتروني.", img: publicAsset('Images/Phramcy.jpg') },
+        { id: 'healthtech', title: "منصات الرعاية الصحية", desc: "فرق متخصصة تدعم خدمة المستخدمين وتحسين تجربتهم.", img: publicAsset('Images/platforms.jpg') },
+        { id: 'telemedicine', title: "مزودو خدمات الطب الاتصالي", desc: "فرق متخصصة تدعم الاستشارات الافتراضية وجدولة المواعيد والفرز الطبي.", img: publicAsset('Images/healthcare.jpg') }
     ];
 
     // 2. Essays Carousel Ref & Scroll Logic
@@ -290,7 +290,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>خدمة العملاء ومراكز الاتصال</h3>
                                 <p>فرق متخصصة تدير تواصل منشأتك مع المرضى عبر قنوات متعددة، بسرعة استجابة وجودة ثابتة.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-1">اكتشف المزيد</Link>
                             </div>
                         </article>
 
@@ -299,7 +299,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>إدارة العمليات التأمينية</h3>
                                 <p>ندعم المنشآت الصحية في إدارة إجراءات التأمين الطبي، من متابعة الموافقات ومطالبات التأمين.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-2">اكتشف المزيد</Link>
                             </div>
                         </article>
 
@@ -308,7 +308,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>إدارة علاقات المرضى وبرامج الولاء</h3>
                                 <p>نعزز ولاء المرضى ونحافظ على استمرار علاقتهم بمنشأتك عبر برامج ولاء واستراتيجيات مخصصة.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-3">اكتشف المزيد</Link>
                             </div>
                         </article>
 
@@ -317,7 +317,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>فرق مبيعات هاتفية</h3>
                                 <p>فرق مدرّبة تتواصل مع المرضى للتعريف بخدماتكم، وتحويل فرص التواصل إلى حجوزات.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-4">اكتشف المزيد</Link>
                             </div>
                         </article>
 
@@ -326,7 +326,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>إدارة عمليات التجارة الإلكترونية</h3>
                                 <p>فرق تدعم العمليات اليومية لمتاجر الصيدليات والمنصات الصحية الإلكترونية.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-5">اكتشف المزيد</Link>
                             </div>
                         </article>
 
@@ -335,7 +335,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>التسويق الرقمي</h3>
                                 <p>نساعد المنشآت على تعزيز حضورها الرقمي من خلال كتابة المحتوى وتحسين محركات البحث.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-6">اكتشف المزيد</Link>
                             </div>
                         </article>
 
@@ -344,7 +344,7 @@ export default function Home() {
                             <div className="svc-bento__body">
                                 <h3>الاستشارات الطبية عن بُعد</h3>
                                 <p>ندعم المنشآت في إدارة خدمات الطب عن بُعد، من الحجوزات ومتابعة المرضى.</p>
-                                <a className="link-more" href="#contact">اكتشف المزيد</a>
+                                <Link className="link-more" to="/services#svc-7">اكتشف المزيد</Link>
                             </div>
                         </article>
                     </div>
@@ -415,6 +415,7 @@ export default function Home() {
             <section className="section sectors-section" id="sectors">
                 <div className="container">
                     <div className="sectors-header mb-5" data-reveal>
+                        <span className="svc-bento-tag">القطاعات الصحية</span>
                         <h2>القطاعات</h2>
                         <p>حلول تعهيد مصممة لاحتياجات كل نوع من المنشآت الصحية.</p>
                     </div>
@@ -423,26 +424,19 @@ export default function Home() {
                         <div className="col-lg-7" data-reveal>
                             <ul className="sectors-interactive-list">
                                 {sectorsData.map((sec, index) => (
-                                    <li
-                                        key={index}
-                                        className={`sector-item ${activeSector === index ? 'active' : ''}`}
-                                        onMouseEnter={() => setActiveSector(index)}
-                                        onClick={() => setActiveSector(index)}
-                                        onKeyDown={(event) => {
-                                            if (event.key === 'Enter' || event.key === ' ') {
-                                                event.preventDefault();
-                                                setActiveSector(index);
-                                            }
-                                        }}
-                                        role="button"
-                                        tabIndex={0}
-                                        aria-pressed={activeSector === index}
-                                    >
-                                        <div className="sector-item__info">
-                                            <h3>{sec.title}</h3>
-                                            <p>{sec.desc}</p>
-                                        </div>
-                                        <div className="sector-item__arrow"><i className="bi bi-arrow-left"></i></div>
+                                    <li key={sec.id}>
+                                        <Link
+                                            className={`sector-item ${activeSector === index ? 'active' : ''}`}
+                                            to={`/sectors#${sec.id}`}
+                                            onMouseEnter={() => setActiveSector(index)}
+                                            onFocus={() => setActiveSector(index)}
+                                        >
+                                            <div className="sector-item__info">
+                                                <h3>{sec.title}</h3>
+                                                <p>{sec.desc}</p>
+                                            </div>
+                                            <div className="sector-item__arrow"><i className="bi bi-arrow-left" aria-hidden="true" /></div>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -530,10 +524,6 @@ export default function Home() {
                                     <i className="bi bi-arrow-left"></i>
                                 </button>
                             </div>
-                            <a href="#" className="btn btn-outline-navy essays-more-btn">
-                                <span>عرض المزيد</span>
-                                <i className="bi bi-arrow-up-left"></i>
-                            </a>
                         </div>
                     </div>
 
@@ -594,8 +584,7 @@ export default function Home() {
                                 </div>
                                 <div className="essay-card__body">
                                     <span className="essay-card__date"><i className="bi bi-calendar3"></i> 20 أكتوبر 2026</span>
-                                    <h3><a href="#">اهم مؤشرات اداء مركز الاتصال الطبي وكيفية قياس كفائته</a></h3>
-                                    <a href="#" className="link-more">اقرأ المقال</a>
+                                    <h3>اهم مؤشرات اداء مركز الاتصال الطبي وكيفية قياس كفائته</h3>
                                 </div>
                             </article>
                         </div>

@@ -6,6 +6,29 @@ export default function Footer() {
   const { pathname } = useLocation();
   const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
   const base = isEnglish ? '/en' : '';
+  const alternatePath = isEnglish
+    ? pathname === '/en/faq'
+      ? '/faq'
+      : pathname === '/en/services'
+        ? '/services'
+        : pathname === '/en/about'
+          ? '/about'
+          : pathname === '/en/contact'
+            ? '/contact'
+            : pathname === '/en/sectors'
+              ? '/sectors'
+              : '/'
+    : pathname === '/faq'
+      ? '/en/faq'
+      : pathname === '/services'
+        ? '/en/services'
+        : pathname === '/about'
+          ? '/en/about'
+          : pathname === '/contact'
+            ? '/en/contact'
+            : pathname === '/sectors'
+              ? '/en/sectors'
+              : '/en';
   const currentYear = new Intl.NumberFormat(isEnglish ? 'en' : 'ar-EG', { numberingSystem: 'latn', useGrouping: false }).format(new Date().getFullYear());
 
   return (
@@ -13,16 +36,17 @@ export default function Footer() {
     <div className="container">
       <div className="row gy-4">
         <div className="col-lg-4">
-          <a className="brand" href="#top"><img src={publicAsset('Images/Logo1.png')} alt={isEnglish ? 'Milaserv' : 'ميلاسيرف'} width="34"
-              height="34"/><span>Milaserv</span></a>
+          <Link className="brand" to={`${base}/#top`}><img src={publicAsset('Images/Logo1.png')} alt={isEnglish ? 'Milaserv' : 'ميلاسيرف'} width="34"
+              height="34"/><span>Milaserv</span></Link>
           <p className="mt-3">{isEnglish ? 'Your partner for managed healthcare operations.' : 'شريكك في تعهيد وإدارة الخدمات التشغيلية للقطاع الصحي.'}</p>
         </div>
         <div className="col-6 col-lg-2">
           <h2 className="footer__h">{isEnglish ? 'Pages' : 'الصفحة'}</h2>
           <ul>
             <li><Link to={`${base}/services`}>{isEnglish ? 'Services' : 'خدماتنا'}</Link></li>
-            <li><Link to={`${base}/#process`}>{isEnglish ? 'How We Work' : 'كيف نعمل؟'}</Link></li>
-            <li><Link to={`${base}/#sectors`}>{isEnglish ? 'Sectors' : 'القطاعات'}</Link></li>
+            <li><Link to={`${base}/faq`}>{isEnglish ? 'FAQ' : 'الأسئلة الشائعة'}</Link></li>
+            <li><Link to={`${base}/#${isEnglish ? 'process' : 'how'}`}>{isEnglish ? 'How We Work' : 'كيف نعمل؟'}</Link></li>
+            <li><Link to={`${base}/sectors`}>{isEnglish ? 'Sectors' : 'القطاعات'}</Link></li>
             <li><Link to={`${base}/#why`}>{isEnglish ? 'Why Milaserv' : 'لماذا ميلاسيرف؟'}</Link></li>
             <li><a href="https://milaserv.com/ar/privacy-policy" target="_blank" rel="noopener">{isEnglish ? 'Privacy Policy' : 'سياسة الخصوصية'}</a></li>
           </ul>
@@ -50,7 +74,13 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <p className="footer__legal">© <span id="year">{currentYear}</span> {isEnglish ? 'Milaserv. All rights reserved.' : 'ميلاسيرف. جميع الحقوق محفوظة.'}</p>
+      <div className="footer__bottom">
+        <p className="footer__legal">© <span id="year">{currentYear}</span> {isEnglish ? 'Milaserv. All rights reserved.' : 'ميلاسيرف. جميع الحقوق محفوظة.'}</p>
+        <div className="footer__language" aria-label="Language">
+          <Link to={isEnglish ? alternatePath : pathname} className={!isEnglish ? 'is-active' : ''}>عربي</Link>
+          <Link to={isEnglish ? pathname : alternatePath} className={isEnglish ? 'is-active' : ''}>EN</Link>
+        </div>
+      </div>
     </div>
   </footer>
   );

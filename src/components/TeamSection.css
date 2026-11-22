@@ -155,37 +155,14 @@
   width: max-content;
 }
 
-/* Expanded Full Grid Layout */
-.team-full-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px 24px;
-  padding-top: 60px;
-  padding-bottom: 52px;
-  animation: teamFadeIn 0.4s ease forwards;
-}
-
-@keyframes teamFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Grayscale & Dim Non-Hovered Cards */
-.team-track:hover .team-card,
-.team-full-grid:hover .team-card {
+.team-track:hover .team-card {
   filter: grayscale(100%) brightness(0.7);
   opacity: 0.6;
   transform: scale(0.98);
 }
 
-.team-track .team-card:hover,
-.team-full-grid .team-card:hover {
+.team-track .team-card:hover {
   filter: grayscale(0%) brightness(1);
   opacity: 1;
   transform: translateY(-4px);
@@ -317,10 +294,6 @@
 
 /* Responsive Adjustments */
 @media (max-width: 991.98px) {
-  .team-full-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .team-header__controls {
     width: 100%;
     justify-content: flex-end;
@@ -331,9 +304,5 @@
   .team-card {
     flex: 0 0 255px;
     height: 350px;
-  }
-
-  .team-full-grid {
-    grid-template-columns: 1fr;
   }
 }

@@ -36,13 +36,13 @@ const SERVICES = [
 ];
 
 const SECTORS = [
-  ['Hospitals', 'Specialist teams to manage patient communications and enquiries across hospital services.', 'hospital.jpg'],
-  ['Medical Centres', 'Coordinated communication across your clinics and departments.', 'medical center.jpg'],
-  ['Private Clinics', 'Operational support that reduces the daily workload on your clinic team.', 'Clinic.webp'],
-  ['Medical Laboratories', 'Clear communication with laboratory patients and follow-up on their enquiries.', 'lab.jpg'],
-  ['Pharmacies', 'Customer communication and operational support for your pharmacy’s online store.', 'Phramcy.jpg'],
-  ['Digital Health Platforms', 'Dedicated teams to assist users and improve their experience.', 'platforms.jpg'],
-  ['Telehealth Providers', 'Support for virtual consultations, appointment scheduling, and clinical triage to improve the patient experience.', 'healthcare.jpg'],
+  ['Hospitals', 'Specialist teams to manage patient communications and enquiries across hospital services.', 'hospital.jpg', 'hospitals'],
+  ['Medical Centres', 'Coordinated communication across your clinics and departments.', 'medical center.jpg', 'multi-branch'],
+  ['Private Clinics', 'Operational support that reduces the daily workload on your clinic team.', 'Clinic.webp', 'clinics'],
+  ['Medical Laboratories', 'Clear communication with laboratory patients and follow-up on their enquiries.', 'lab.jpg', 'labs'],
+  ['Pharmacies', 'Customer communication and operational support for your pharmacy’s online store.', 'Phramcy.jpg', 'pharmacies'],
+  ['Digital Health Platforms', 'Dedicated teams to assist users and improve their experience.', 'platforms.jpg', 'healthtech'],
+  ['Telehealth Providers', 'Support for virtual consultations, appointment scheduling, and clinical triage to improve the patient experience.', 'healthcare.jpg', 'telemedicine'],
 ];
 
 function AnimatedNumber({ value, decimals = 0 }) {
@@ -198,13 +198,15 @@ export default function HomeEn() {
 
       <section className="section sectors-section" id="sectors">
         <div className="container">
-          <div className="sectors-header mb-5" data-reveal><h2>Who we serve</h2><p>From private clinics to hospitals and digital platforms, we tailor our teams to the demands of your healthcare setting.</p></div>
+          <div className="sectors-header mb-5" data-reveal><span className="svc-bento-tag">Healthcare Sectors</span><h2>Who we serve</h2><p>From private clinics to hospitals and digital platforms, we tailor our teams to the demands of your healthcare setting.</p></div>
           <div className="row align-items-stretch g-4 g-xl-5">
             <div className="col-lg-7" data-reveal>
               <ul className="sectors-interactive-list">
-                {SECTORS.map(([title, description], index) => (
-                  <li key={title} className={`sector-item ${sector === index ? 'active' : ''}`} onMouseEnter={() => setSector(index)} onClick={() => setSector(index)} role="button" tabIndex={0} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') setSector(index); }}>
-                    <div className="sector-item__info"><h3>{title}</h3><p>{description}</p></div><div className="sector-item__arrow"><i className="bi bi-arrow-right" /></div>
+                {SECTORS.map(([title, description, , id], index) => (
+                  <li key={title}>
+                    <Link className={`sector-item ${sector === index ? 'active' : ''}`} to={`/en/sectors#${id}`} onMouseEnter={() => setSector(index)} onFocus={() => setSector(index)}>
+                      <div className="sector-item__info"><h3>{title}</h3><p>{description}</p></div><div className="sector-item__arrow"><i className="bi bi-arrow-right" aria-hidden="true" /></div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -249,9 +251,9 @@ export default function HomeEn() {
                 ['Banner2.png', 'Patient Experience', '10 November 2026', 'How does a medical call centre improve patient experience?', 'https://tinyurl.com/y6uce8v8'],
                 ['Banner3.png', 'Digital Transformation', '4 November 2026', 'Digital transformation in Saudi healthcare: how have operating services changed?', 'https://shorturl.at/HWPan'],
                 ['Banner4.png', 'Healthcare Outsourcing', '28 October 2026', 'Medical call centres for pharmacies: services that can be outsourced', 'https://shorturl.at/iI3Z7'],
-                ['Banner5.png', 'Healthcare Outsourcing', '20 October 2026', 'Key medical call centre performance indicators and how to measure efficiency', '#'],
+                ['Banner5.png', 'Healthcare Outsourcing', '20 October 2026', 'Key medical call centre performance indicators and how to measure efficiency', null],
               ].map(([image, category, date, title, link]) => (
-                <article className="essay-card" key={title}><div className="essay-card__banner"><img src={publicAsset(`Images/${image}`)} alt="" /><span className="essay-card__cat">{category}</span></div><div className="essay-card__body"><span className="essay-card__date"><i className="bi bi-calendar3" /> {date}</span><h3><a href={link}>{title}</a></h3><a href={link} className="link-more">Read article</a></div></article>
+                <article className="essay-card" key={title}><div className="essay-card__banner"><img src={publicAsset(`Images/${image}`)} alt="" /><span className="essay-card__cat">{category}</span></div><div className="essay-card__body"><span className="essay-card__date"><i className="bi bi-calendar3" /> {date}</span><h3>{link ? <a href={link}>{title}</a> : title}</h3>{link && <a href={link} className="link-more">Read article</a>}</div></article>
               ))}
             </div>
           </div>

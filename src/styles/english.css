@@ -95,6 +95,10 @@ html[lang="en"] .hero .hero-eyebrow {
   white-space: normal;
 }
 
+html[lang="en"] .about-page .hero-eyebrow {
+  margin: 0 0 20px !important;
+}
+
 html[lang="en"] .hero h1 {
   height: auto;
   max-width: 54rem !important;

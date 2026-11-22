@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicAsset } from '../utils/publicAsset';
-import TeamSection from '../components/TeamSection';
+import AboutTeamList from '../components/AboutTeamList';
 
 const STATS = [
   ['01', 'Customer interactions to date', '15M+', 'Customer interactions'],
@@ -25,7 +25,7 @@ export default function AboutEn() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ['numbers', 'operating-model', 'healthcare-scope', 'team'];
+    const sectionIds = ['numbers', 'operating-model', 'healthcare-scope', 'aboutteamlist'];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((section) => section !== null);
@@ -71,7 +71,7 @@ export default function AboutEn() {
           <li><a href="#numbers" className={activeSection === 'numbers' ? 'is-active' : ''} aria-current={activeSection === 'numbers' ? 'true' : undefined}><i className="bi bi-bar-chart-line" />Milaserv in numbers</a></li>
           <li><a href="#operating-model" className={activeSection === 'operating-model' ? 'is-active' : ''} aria-current={activeSection === 'operating-model' ? 'true' : undefined}><i className="bi bi-gear" />Operating model</a></li>
           <li><a href="#healthcare-scope" className={activeSection === 'healthcare-scope' ? 'is-active' : ''} aria-current={activeSection === 'healthcare-scope' ? 'true' : undefined}><i className="bi bi-hospital" />Healthcare focus</a></li>
-          <li><a href="#team" className={activeSection === 'team' ? 'is-active' : ''} aria-current={activeSection === 'team' ? 'true' : undefined}><i className="bi bi-people" />Leadership Team</a></li>
+          <li><a href="#aboutteamlist" className={activeSection === 'aboutteamlist' ? 'is-active' : ''} aria-current={activeSection === 'aboutteamlist' ? 'true' : undefined}><i className="bi bi-people" />Leadership Team</a></li>
         </ul></div>
       </nav>
 
@@ -117,7 +117,7 @@ export default function AboutEn() {
         </div></div>
       </section>
 
-      <TeamSection isEnglish />
+      <AboutTeamList isEnglish={true} />
 
     </div>
   );

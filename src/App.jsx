@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Outlet, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
@@ -10,11 +10,14 @@ import ContactForm from './components/ContactForm';
 import HomeEn from './pages/HomeEn';
 import ServicesEn from './pages/ServicesEn';
 import AboutEn from './pages/AboutEn';
+import Sectors from './pages/Sectors';
+import FAQ from './pages/FAQ';
 
 function Layout() {
   const { pathname, hash } = useLocation();
   const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
   const isContactPage = pathname === '/contact' || pathname === '/en/contact';
+  const isFaqPage = pathname === '/faq' || pathname === '/en/faq';
 
   useEffect(() => {
     document.documentElement.lang = isEnglish ? 'en' : 'ar';
@@ -69,7 +72,7 @@ function Layout() {
       <Navbar />
       <main id="main" tabIndex="-1">
         <Outlet />
-        {!isContactPage && <FinalCTA />}
+        {!isContactPage && !isFaqPage && <FinalCTA />}
       </main>
       <Footer />
     </>
@@ -89,6 +92,13 @@ export default function App() {
           <Route path="/en/services" element={<ServicesEn />} />
           <Route path="/en/contact" element={<ContactForm />} />
           <Route path="/en/about" element={<AboutEn />} />
+          <Route path="/sectors" element={<Sectors />} />
+          <Route path="/en/sectors" element={<Sectors initialLang="en" />} />
+          <Route path="/faq" element={<FAQ initialLang="ar" />} />
+          <Route path="/en/faq" element={<FAQ initialLang="en" />} />
+
+          {/* Fallback to home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
