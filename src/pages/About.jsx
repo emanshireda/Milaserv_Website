@@ -192,7 +192,7 @@ export default function About() {
         </div>
       </section>
 
-      <nav className="about-nav" aria-label="أقسام من نحن">
+      <nav className="svc-nav about-nav" aria-label="أقسام من نحن">
         <div className="container">
           <ul>
             {ABOUT_NAV.map((item) => (

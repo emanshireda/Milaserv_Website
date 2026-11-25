@@ -10,19 +10,14 @@ const teamMembers = [
     img: publicAsset('Images/Mostafa Sleem.png'),
   },
   {
-    name: '[اسم رئيس العمليات]',
+    name: 'د/ فتحي أحمد',
     role: 'رئيس العمليات التشغيلية (COO)',
-    img: publicAsset('Images/team/coo.png'),
+    img: publicAsset('Images/Dr. Fathy.png'),
   },
   {
     name: 'أ/ احمد سمير',
     role: 'الرئيس المالي (CFO)',
     img: publicAsset('Images/Ahmed Samir.png'),
-  },
-  {
-    name: '[اسم مدير الجودة]',
-    role: 'مدير ضمان الجودة (Quality Assurance Manager)',
-    img: publicAsset('Images/team/qa.png'),
   },
   {
     name: 'أ/ أسامة الجندي',
@@ -37,12 +32,11 @@ const teamMembers = [
 ];
 
 const englishTeamMembers = [
-  { name: '[Chief Executive Name]', role: 'Chief Executive Officer (CEO)' },
-  { name: '[Operations Director Name]', role: 'Chief Operating Officer (COO)' },
-  { name: '[Finance Director Name]', role: 'Chief Financial Officer (CFO)' },
-  { name: '[Quality Manager Name]', role: 'Quality Assurance Manager' },
-  { name: '[HR Manager Name]', role: 'Human Resources Manager' },
-  { name: '[Commercial Manager Name]', role: 'Commercial Manager' },
+  { name: 'Dr. Mostafa Salem', role: 'Chief Executive Officer (CEO)' },
+  { name: 'Dr. Fathy Ahmed', role: 'Chief Operating Officer (COO)' },
+  { name: 'Mr. Ahmed Samir', role: 'Chief Financial Officer (CFO)' },
+  { name: 'Mr. Osama Elgendy', role: 'Human Resources Manager' },
+  { name: 'Eng. Mohamed Aziz', role: 'Commercial Manager' },
 ];
 
 export default function TeamSection({ isEnglish = false }) {

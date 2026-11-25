@@ -28,6 +28,7 @@ const HERO_BANNERS = [
     },
 ];
 
+
 // Reusable Counter Component for Metrics
 function Counter({ target, decimals = 0 }) {
     const [displayValue, setDisplayValue] = useState('0');
@@ -96,14 +97,55 @@ export default function Home() {
     // 1. Sectors Interactive State
     const [activeSector, setActiveSector] = useState(0);
     const sectorsData = [
-        { id: 'hospitals', title: "المستشفيات", desc: "فرق متخصصة تدير التواصل مع المرضى والمراجعين.", img: publicAsset('Images/hospital.jpg') },
-        { id: 'multi-branch', title: "المجمعات الطبية", desc: "فرق تدعم التواصل عبر عيادات المجمع وأقسامه المختلفة.", img: publicAsset('Images/medical center.jpg') },
-        { id: 'clinics', title: "العيادات الخاصة", desc: "دعم يخفف العبء التشغيلي عن فريق العيادة.", img: publicAsset('Images/Clinic.webp') },
-        { id: 'labs', title: "المختبرات الطبية", desc: "تواصل منظم مع مراجعي المعمل ومتابعة استفساراتهم.", img: publicAsset('Images/lab.jpg') },
-        { id: 'pharmacies', title: "الصيدليات", desc: "دعم تواصل الصيدلية مع عملائها ومتجرها الإلكتروني.", img: publicAsset('Images/Phramcy.jpg') },
-        { id: 'healthtech', title: "منصات الرعاية الصحية", desc: "فرق متخصصة تدعم خدمة المستخدمين وتحسين تجربتهم.", img: publicAsset('Images/platforms.jpg') },
-        { id: 'telemedicine', title: "مزودو خدمات الطب الاتصالي", desc: "فرق متخصصة تدعم الاستشارات الافتراضية وجدولة المواعيد والفرز الطبي.", img: publicAsset('Images/healthcare.jpg') }
-    ];
+    {
+        id: 'hospitals',
+        num: '01',
+        title: 'المستشفيات',
+        subtitle: 'دعم تشغيلي يواكب حجم العمليات وتعدد الأقسام',
+        desc: 'إدارة المكالمات والمواعيد والطلبات والمتابعات عبر أقسام المستشفى بكفاءة وتنسيق مستمر.',
+        img: './Images/hospital.jpg',
+    },
+    {
+        id: 'multi-branch',
+        num: '02',
+        title: 'المراكز والمجمعات الطبية',
+        subtitle: 'إدارة أكثر تنظيمًا للتواصل والمواعيد عبر التخصصات المختلفة',
+        desc: 'تنسيق الحجوزات والتذكيرات والاستفسارات ومتابعة المراجعين عبر مختلف التخصصات.',
+        img: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=85',
+    },
+    {
+        id: 'labs',
+        num: '03',
+        title: 'المختبرات الطبية',
+        subtitle: 'تواصل منظم يدعم تجربة العملاء من الحجز إلى المتابعة',
+        desc: 'تنظيم طلبات الفحوصات والسحب المنزلي وإخطار العملاء بجاهزية النتائج وطرق الاستلام.',
+        img: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1400&q=85',
+    },
+    {
+        id: 'pharmacies',
+        num: '04',
+        title: 'الصيدليات',
+        subtitle: 'دعم تشغيلي يربط خدمة العملاء بالمتاجر الإلكترونية',
+        desc: 'إدارة استفسارات العملاء والطلبات الإلكترونية والتوصيل وبرامج الولاء وتحديث بيانات المنتجات.',
+        img: './Images/Phramcy.jpg',
+    },
+    {
+        id: 'healthtech',
+        num: '05',
+        title: 'منصات الرعاية الصحية',
+        subtitle: 'فرق تشغيل تدعم المستخدمين وتواكب نمو المنصة',
+        desc: 'دعم استفسارات المستخدمين وتهيئة الحسابات وتوثيق المشكلات التقنية وتصعيدها.',
+        img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85',
+    },
+    {
+        id: 'telemedicine',
+        num: '06',
+        title: 'مزودو خدمات الطب الاتصالي',
+        subtitle: 'دعم متكامل لتشغيل الاستشارات الطبية الافتراضية',
+        desc: 'إدارة حجوزات الاستشارات الافتراضية وجداول الأطباء والدعم قبل وبعد الجلسات.',
+        img: './Images/healthcare.jpg',
+    },
+];
 
     // 2. Essays Carousel Ref & Scroll Logic
     const essaysViewportRef = useRef(null);
@@ -257,7 +299,7 @@ export default function Home() {
                     <ul className="stats">
                         <li>
                             <div><Counter target={4} /><span>سنوات</span></div>
-                            <p>سنة خبرة في السوق الخليجي.</p>
+                            <p> خبرة في السوق الخليجي.</p>
                         </li>
                         <li>
                             <div><Counter target={15} /><span>مليون</span></div>
@@ -415,9 +457,9 @@ export default function Home() {
             <section className="section sectors-section" id="sectors">
                 <div className="container">
                     <div className="sectors-header mb-5" data-reveal>
-                        <span className="svc-bento-tag">القطاعات الصحية</span>
+                        <span className="svc-bento-tag">القطاعات التي نخدمها</span>
                         <h2>القطاعات</h2>
-                        <p>حلول تعهيد مصممة لاحتياجات كل نوع من المنشآت الصحية.</p>
+                        <p>حلول تشغيلية متخصصة لمختلف قطاعات الرعاية الصحية في السعودية ودول الخليج.</p>
                     </div>
 
                     <div className="row align-items-stretch g-4 g-xl-5">
@@ -435,7 +477,9 @@ export default function Home() {
                                                 <h3>{sec.title}</h3>
                                                 <p>{sec.desc}</p>
                                             </div>
-                                            <div className="sector-item__arrow"><i className="bi bi-arrow-left" aria-hidden="true" /></div>
+                                            <div className="sector-item__arrow">
+                                                <i className="bi bi-arrow-left" aria-hidden="true" />
+                                            </div>
                                         </Link>
                                     </li>
                                 ))}
@@ -444,12 +488,16 @@ export default function Home() {
 
                         <div className="col-lg-5" data-reveal>
                             <div className="sector-preview-wrapper">
-                                <img src={sectorsData[activeSector].img} alt={sectorsData[activeSector].title} className="sector-preview-img active" />
-                                <div className="sector-preview-overlay"></div>
+                                <img
+                                    src={sectorsData[activeSector].img}
+                                    alt={sectorsData[activeSector].title}
+                                    className="sector-preview-img active"
+                                />
+                                <div className="sector-preview-overlay" />
                                 <div className="sector-preview-content">
-                                    <span className="sector-preview-badge">القطاعات المستهدفة</span>
+                                    <span className="sector-preview-badge">القطاع {sectorsData[activeSector].num}</span>
                                     <h3>{sectorsData[activeSector].title}</h3>
-                                    <p>{sectorsData[activeSector].desc}</p>
+                                    <p>{sectorsData[activeSector].subtitle}</p>
                                 </div>
                             </div>
                         </div>
@@ -536,8 +584,8 @@ export default function Home() {
                                 </div>
                                 <div className="essay-card__body">
                                     <span className="essay-card__date"><i className="bi bi-calendar3"></i> 15 نوفمبر 2026</span>
-                                    <h3><a href="https://tinyurl.com/5febu9tf">هل تعتقد أن تعهيد مركز الاتصال الطبي يقتصر على الرد على المكالمات؟</a></h3>
-                                    <a href="https://tinyurl.com/5febu9tf" className="link-more">اقرأ المقال</a>
+                                    <h3><Link to="/blog/medical-call-centre-beyond-calls">هل تعتقد أن تعهيد مركز الاتصال الطبي يقتصر على الرد على المكالمات؟</Link></h3>
+                                    <Link to="/blog/medical-call-centre-beyond-calls" className="link-more">اقرأ المقال</Link>
                                 </div>
                             </article>
 
@@ -548,8 +596,8 @@ export default function Home() {
                                 </div>
                                 <div className="essay-card__body">
                                     <span className="essay-card__date"><i className="bi bi-calendar3"></i> 10 نوفمبر 2026</span>
-                                    <h3><a href="https://tinyurl.com/y6uce8v8">كيف يساعد الكول سنتر الطبي في تحسين تجربة المرضى؟</a></h3>
-                                    <a href="https://tinyurl.com/y6uce8v8" className="link-more">اقرأ المقال</a>
+                                    <h3><Link to="/blog/how-medical-call-centre-improves-patient-experience">كيف يساعد الكول سنتر الطبي في تحسين تجربة المرضى؟</Link></h3>
+                                    <Link to="/blog/how-medical-call-centre-improves-patient-experience" className="link-more">اقرأ المقال</Link>
                                 </div>
                             </article>
 
@@ -560,8 +608,8 @@ export default function Home() {
                                 </div>
                                 <div className="essay-card__body">
                                     <span className="essay-card__date"><i className="bi bi-calendar3"></i> 04 نوفمبر 2026</span>
-                                    <h3><a href="https://shorturl.at/HWPan">التحول الرقمي في الرعاية الصحية السعودية: كيف تغيّرت طريقة تشغيل الخدمات؟</a></h3>
-                                    <a href="https://shorturl.at/HWPan" className="link-more">اقرأ المقال</a>
+                                    <h3><Link to="/blog/digital-transformation-saudi-healthcare-operations">التحول الرقمي في الرعاية الصحية السعودية: كيف تغيّرت طريقة تشغيل الخدمات؟</Link></h3>
+                                    <Link to="/blog/digital-transformation-saudi-healthcare-operations" className="link-more">اقرأ المقال</Link>
                                 </div>
                             </article>
 
@@ -572,19 +620,20 @@ export default function Home() {
                                 </div>
                                 <div className="essay-card__body">
                                     <span className="essay-card__date"><i className="bi bi-calendar3"></i> 28 أكتوبر 2026</span>
-                                    <h3><a href="https://shorturl.at/iI3Z7">الكول سنتر الطبي للصيدليات: خدمات يمكن تعهيدها</a></h3>
-                                    <a href="https://shorturl.at/iI3Z7" className="link-more">اقرأ المقال</a>
+                                    <h3><Link to="/blog/medical-call-centre-for-pharmacies">الكول سنتر الطبي للصيدليات: خدمات يمكن تعهيدها</Link></h3>
+                                    <Link to="/blog/medical-call-centre-for-pharmacies" className="link-more">اقرأ المقال</Link>
                                 </div>
                             </article>
 
                             <article className="essay-card">
                                 <div className="essay-card__banner">
                                     <img src={publicAsset('Images/Banner5.png')} alt="عنوان المقال الخامس" />
-                                    <span className="essay-card__cat">ألتعهيد الطبي</span>
+                                    <span className="essay-card__cat">التعهيد الطبي</span>
                                 </div>
                                 <div className="essay-card__body">
                                     <span className="essay-card__date"><i className="bi bi-calendar3"></i> 20 أكتوبر 2026</span>
-                                    <h3>اهم مؤشرات اداء مركز الاتصال الطبي وكيفية قياس كفائته</h3>
+                                    <h3><Link to="/blog/key-medical-call-centre-kpis-and-sla">أهم مؤشرات أداء مركز الاتصال الطبي وكيفية قياس كفاءته</Link></h3>
+                                    <Link to="/blog/key-medical-call-centre-kpis-and-sla" className="link-more">اقرأ المقال</Link>
                                 </div>
                             </article>
                         </div>
@@ -592,7 +641,7 @@ export default function Home() {
                 </div>
             </section>
 
-                {/* ================= TEAM SECTION (NEW) ================= */}
+            {/* ================= TEAM SECTION (NEW) ================= */}
             <TeamSection />
         </>
     );

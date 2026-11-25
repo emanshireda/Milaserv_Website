@@ -193,7 +193,7 @@ export default function Navbar() {
 
             {/* Navbar Links */}
             <div className={`collapse navbar-collapse ${mobileOpen ? 'show' : ''}`} id="mainNav">
-              <ul className="navbar-nav mx-xl-auto align-xl-items-center gap-2 gap-xl-4">
+              <ul className="navbar-nav mx-xl-auto align-items-xl-center gap-2 gap-xl-4">
 
                 {/* Dropdown 1: services */}
                 <li className={`ms-nav-item ${openDropdown === 'services' ? 'is-open' : ''}`}>
@@ -279,8 +279,15 @@ export default function Navbar() {
 
                 {/* Regular Link: المدونة*/}
                 <li className="nav-item">
-                  <Link className="nav-link" to={`${base}/#essays`} onClick={closeAll}>
+                  <Link className="nav-link" to={`${base}/blog`} onClick={closeAll}>
                     {isEnglish ? 'Blog' : 'المدونة'}
+                  </Link>
+                </li>
+
+                {/* Regular Link: الوظائف*/}
+                <li className="nav-item">
+                  <Link className="nav-link" to={`${base}/#`} onClick={closeAll}>
+                    {isEnglish ? 'Careers' : 'الوظائف'}
                   </Link>
                 </li>
 

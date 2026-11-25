@@ -1,14 +1,15 @@
 /* =========================================================
-   MilaServ Dark Glassmorphic Contact Form
+   MilaServ Contact Form
    ========================================================= */
 
 .contact-form-section {
     position: relative;
     padding-block: clamp(60px, 8vw, 100px);
     background:
-        radial-gradient(60% 70% at 50% 0%, rgba(40, 194, 186, 0.14), transparent 70%),
-        linear-gradient(135deg, #07182C 0%, #0B2340 100%);
-    color: #C3D3E2;
+        radial-gradient(60% 70% at 50% 0%, rgba(1, 183, 172, 0.1), transparent 70%),
+        radial-gradient(65% 80% at 8% 85%, rgba(255, 255, 255, 0.9), transparent 72%),
+        #F5F9F8;
+    color: #17283B;
     overflow: hidden;
 }
 
@@ -16,17 +17,17 @@
     max-width: 820px;
     margin-inline: auto;
     background:
-        radial-gradient(90% 75% at 50% 10%, rgba(40, 194, 186, 0.18), transparent 70%),
-        linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, rgba(7, 24, 44, 0.85) 100%);
+        radial-gradient(90% 75% at 50% 10%, rgba(1, 183, 172, 0.12), transparent 70%),
+        rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(40, 194, 186, 0.28);
-    border-top: 1.5px solid rgba(40, 194, 186, 0.5);
+    border: 1px solid rgba(1, 183, 172, 0.22);
+    border-top: 1.5px solid rgba(1, 183, 172, 0.38);
     border-radius: 24px;
     padding: clamp(32px, 5vw, 56px);
     box-shadow:
-        0 24px 60px rgba(0, 0, 0, 0.4),
-        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        0 24px 60px rgba(11, 35, 64, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
     margin-top: 100px;
 }
 
@@ -45,8 +46,8 @@
     padding: 12px 14px;
     border: 1px solid rgba(255, 184, 92, 0.55);
     border-radius: 10px;
-    background: rgba(255, 184, 92, 0.08);
-    color: #ffd7a1;
+    background: rgba(255, 184, 92, 0.16);
+    color: #704300;
 }
 
 .contact-tag {
@@ -55,7 +56,7 @@
     gap: 10px;
     font-size: 0.88rem;
     font-weight: 600;
-    color: #28c2ba;
+    color: #066E6A;
     margin-bottom: 8px;
 }
 
@@ -64,31 +65,31 @@
     display: inline-block;
     width: 32px;
     height: 1.5px;
-    background: #28c2ba;
+    background: #01b7ac;
 }
 
 .contact-form__head h2 {
-    color: #ffffff;
+    color: #0B2340;
     font-size: clamp(1.8rem, 2.5vw, 2.3rem);
     font-weight: 700;
     margin-bottom: 10px;
 }
 
 .contact-form__head p {
-    color: #94A3B8;
+    color: #55687A;
     font-size: 1.02rem;
     margin: 0;
     line-height: 1.6;
 }
 
 .required-star {
-    color: #28c2ba;
+    color: #066E6A;
     font-weight: 700;
 }
 
 .optional-tag {
     font-size: 0.82rem;
-    color: #7B90A6;
+    color: #647789;
     font-weight: 400;
 }
 
@@ -114,7 +115,7 @@
     display: block;
     font-size: 0.92rem;
     font-weight: 600;
-    color: #E2E8F0;
+    color: #17283B;
     margin-bottom: 8px;
 }
 
@@ -125,11 +126,11 @@
 .contact-form select,
 .contact-form textarea {
     width: 100%;
-    background: rgba(7, 24, 44, 0.65);
-    border: 1px solid rgba(40, 194, 186, 0.25);
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(1, 183, 172, 0.2);
     border-radius: 12px;
     padding: 14px 18px;
-    color: #ffffff;
+    color: #17283B;
     font-size: 0.98rem;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -138,15 +139,15 @@
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #64748B;
+    color: #718394;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-    border-color: #28c2ba;
-    box-shadow: 0 0 15px rgba(40, 194, 186, 0.25);
-    background: rgba(7, 24, 44, 0.85);
+    border-color: #01b7ac;
+    box-shadow: 0 0 15px rgba(1, 183, 172, 0.18);
+    background: #ffffff;
 }
 
 .contact-form select {
@@ -159,8 +160,8 @@
 }
 
 .contact-form select option {
-    background: #0B2340;
-    color: #ffffff;
+    background: #ffffff;
+    color: #17283B;
 }
 
 /* Phone & Country Code Group */
@@ -189,9 +190,10 @@
 }
 
 .service-pill {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(40, 194, 186, 0.25);
-    color: #C3D3E2;
+    background: rgba(255, 255, 255, 0.76);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(1, 183, 172, 0.2);
+    color: #17283B;
     padding: 8px 16px;
     border-radius: 999px;
     font-size: 0.88rem;
@@ -202,17 +204,17 @@
 }
 
 .service-pill:hover {
-    border-color: #28c2ba;
-    color: #ffffff;
-    background: rgba(40, 194, 186, 0.1);
+    border-color: #01b7ac;
+    color: #066E6A;
+    background: rgba(1, 183, 172, 0.1);
 }
 
 .service-pill.active {
-    background: #28c2ba;
-    border-color: #28c2ba;
-    color: #07182C;
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
     font-weight: 700;
-    box-shadow: 0 0 15px rgba(40, 194, 186, 0.35);
+    box-shadow: 0 0 15px rgba(1, 183, 172, 0.22);
 }
 
 /* Footer & Privacy Checkbox */
@@ -228,7 +230,7 @@
     gap: 12px;
     cursor: pointer;
     font-size: 0.92rem;
-    color: #C3D3E2;
+    color: #55687A;
     margin-bottom: 24px;
     user-select: none;
 }
@@ -236,17 +238,17 @@
 .privacy-checkbox-label input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: #28c2ba;
+    accent-color: #01b7ac;
     cursor: pointer;
 }
 
 .privacy-checkbox-label a {
-    color: #28c2ba;
+    color: #066E6A;
     text-decoration: underline;
 }
 
 .privacy-checkbox-label a:hover {
-    color: #ffffff;
+    color: #01b7ac;
 }
 
 .form-submit-row {
@@ -259,7 +261,7 @@
 
 .data-security-note {
     font-size: 0.85rem;
-    color: #7B90A6;
+    color: #647789;
 }
 
 /* Add spacing between text and arrow icon for all action buttons with icons */
@@ -275,9 +277,9 @@
   align-items: center;
   justify-content: center;
   gap: 0; /* Handled explicitly by margin-inline-start above */
-  background: #28c2ba !important;
-  color: #07182C !important;
-  border: none !important;
+  background: var(--teal) !important;
+  color: #fff !important;
+  border: 1px solid var(--teal) !important;
   font-weight: 700 !important;
   padding: 12px 32px !important;
   border-radius: 999px !important;
@@ -286,15 +288,19 @@
 }
 
 .submit-btn:hover {
-  background: #ffffff !important;
+  background: var(--teal-dark) !important;
+  border-color: var(--teal-dark) !important;
+  color: #fff !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(40, 194, 186, 0.4);
+  box-shadow: 0 10px 25px rgba(1, 183, 172, 0.25);
 }
 
 .submit-btn:hover {
-    background: #ffffff !important;
+    background: var(--teal-dark) !important;
+    border-color: var(--teal-dark) !important;
+    color: #fff !important;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(40, 194, 186, 0.4);
+    box-shadow: 0 10px 25px rgba(1, 183, 172, 0.25);
 }
 
 /* Success Confirmation State */
@@ -310,12 +316,12 @@
 }
 
 .contact-success-box h3 {
-    color: #ffffff;
+    color: #0B2340;
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
 .contact-success-box p {
-    color: #94A3B8;
+    color: #55687A;
     font-size: 1.05rem;
 }

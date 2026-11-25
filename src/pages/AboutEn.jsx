@@ -66,7 +66,7 @@ export default function AboutEn() {
         </div>
       </section>
 
-      <nav className="about-nav" aria-label="About sections">
+      <nav className="svc-nav about-nav" aria-label="About sections">
         <div className="container"><ul>
           <li><a href="#numbers" className={activeSection === 'numbers' ? 'is-active' : ''} aria-current={activeSection === 'numbers' ? 'true' : undefined}><i className="bi bi-bar-chart-line" />Milaserv in numbers</a></li>
           <li><a href="#operating-model" className={activeSection === 'operating-model' ? 'is-active' : ''} aria-current={activeSection === 'operating-model' ? 'true' : undefined}><i className="bi bi-gear" />Operating model</a></li>

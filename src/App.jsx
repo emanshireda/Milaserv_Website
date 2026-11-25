@@ -12,6 +12,8 @@ import ServicesEn from './pages/ServicesEn';
 import AboutEn from './pages/AboutEn';
 import Sectors from './pages/Sectors';
 import FAQ from './pages/FAQ';
+import Blog from './pages/Blog';
+import ArticleDetail from './pages/ArticleDetail';
 
 function Layout() {
   const { pathname, hash } = useLocation();
@@ -96,6 +98,9 @@ export default function App() {
           <Route path="/en/sectors" element={<Sectors initialLang="en" />} />
           <Route path="/faq" element={<FAQ initialLang="ar" />} />
           <Route path="/en/faq" element={<FAQ initialLang="en" />} />
+          <Route path="/en/blog" element={<Navigate to="/blog" replace />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<ArticleDetail />} />
 
           {/* Fallback to home */}
           <Route path="*" element={<Navigate to="/" replace />} />

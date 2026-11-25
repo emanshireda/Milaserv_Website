@@ -27,7 +27,7 @@
   color: var(--on-dark);
 }
 
-.crumbs li + li::before {
+.crumbs li+li::before {
   content: "/";
   margin-inline-end: 10px;
   opacity: 0.45;
@@ -131,17 +131,35 @@
 .page-hero__actions {
   animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
-.hero-eyebrow { animation-delay: 0.05s; }
-.page-hero h1 { animation-delay: 0.12s; }
-.page-hero__intro { animation-delay: 0.2s; }
-.page-hero__actions { animation-delay: 0.28s; }
+
+.hero-eyebrow {
+  animation-delay: 0.05s;
+}
+
+.page-hero h1 {
+  animation-delay: 0.12s;
+}
+
+.page-hero__intro {
+  animation-delay: 0.2s;
+}
+
+.page-hero__actions {
+  animation-delay: 0.28s;
+}
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(20px); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }
 
 @media (max-width: 767.98px) {
-  .page-hero__intro { grid-template-columns: 1fr; gap: 14px; }
+  .page-hero__intro {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 }
 
 /* ---------- Sticky service index (Glass Pill Bar) ---------- */
@@ -154,6 +172,15 @@
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(11, 35, 64, 0.08);
   box-shadow: 0 6px 24px rgba(11, 35, 64, 0.04);
+}
+
+.svc-nav .container {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.svc-nav .container::-webkit-scrollbar {
+  display: none;
 }
 
 .svc-nav__progress {
@@ -169,11 +196,12 @@
 .svc-nav ul {
   list-style: none;
   margin: 0;
-  padding: 10px 0;
+  padding: 0;
   display: flex;
+  align-items: center;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  overflow: visible !important;
+  width: max-content;
 }
 
 .svc-nav ul::-webkit-scrollbar {
@@ -208,8 +236,9 @@
 .svc-nav a.is-active {
   color: var(--navy);
   font-weight: 600;
-  background: rgba(40, 194, 186, 0.14);
-  border-color: rgba(40, 194, 186, 0.35);
+  background: var(--teal, #078B86);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(7, 139, 134, 0.28) !important;
 }
 
 .svc-nav a.is-active .bi {
@@ -217,6 +246,10 @@
 }
 
 /* ---------- Service blocks ---------- */
+.svc-blocks {
+  background: var(--white);
+}
+
 .svc-block {
   position: relative;
   padding-block: clamp(64px, 8vw, 100px);
@@ -224,12 +257,16 @@
   border-bottom: 1px solid var(--line);
 }
 
-.svc-blocks > .svc-block:nth-child(even) {
+.svc-blocks>.svc-block:nth-child(even) {
+  padding-block: var(--space-section);
   background:
-    radial-gradient(55% 75% at 88% 15%, rgba(40, 194, 186, 0.282), transparent 65%),
-    radial-gradient(45% 65% at 10% 85%, rgba(9, 100, 136, 0.44), transparent 65%),
-    var(--navy);
-  border-bottom: none;
+    radial-gradient(85% 85% at 85% 0%, rgba(153, 202, 201, 0.336), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.537), rgba(255, 255, 255, 0.608)),
+    url("./Images/HEROlight1.jpg") !important;
+  background-size: 100% 100%, 100% 100%, cover !important;
+  background-position: center, center, center !important;
+  background-repeat: no-repeat, no-repeat, no-repeat !important;
+  color: var(--ink);
 }
 
 .svc-block__inner {
@@ -261,7 +298,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
-  background: linear-gradient(180deg, rgba(11, 35, 64, 0.18) 0%, rgba(11, 35, 64, 0.04) 100%);
+  background: linear-gradient(180deg, rgba(3, 90, 101, 0.545) 0%, rgba(11, 35, 64, 0.04) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -324,9 +361,11 @@
   margin-top: clamp(28px, 3.5vw, 40px);
   padding: clamp(22px, 3vw, 30px);
   border-radius: 20px;
-  background: #f8fafc;
-  border: 1px solid rgba(11, 35, 64, 0.08);
-  box-shadow: 0 10px 30px rgba(11, 35, 64, 0.03);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(1, 183, 172, 0.18);
+  box-shadow: 0 10px 30px rgba(11, 35, 64, 0.06);
 }
 
 .includes h3 {
@@ -369,8 +408,9 @@
   gap: 12px;
   padding: 13px 16px;
   border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid rgba(11, 35, 64, 0.07);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(1, 183, 172, 0.13);
+  backdrop-filter: blur(8px);
   font-weight: 500;
   font-size: 0.98rem;
   color: var(--navy);
@@ -378,7 +418,8 @@
 }
 
 .includes ul li::before {
-  content: "\F26E"; /* Bootstrap Icons check-lg */
+  content: "\F26E";
+  /* Bootstrap Icons check-lg */
   font-family: "bootstrap-icons";
   display: inline-grid;
   place-items: center;
@@ -406,75 +447,6 @@
   font-weight: 600;
 }
 
-/* ---------- Dark Navy Blocks (Even Children — Glassmorphic Theme) ---------- */
-.svc-blocks > .svc-block:nth-child(even) .svc-block__no {
-  background: linear-gradient(
-    155deg,
-    rgba(11, 53, 64, 0.25) 0%,
-    rgba(5, 185, 179, 0.85) 30%,
-    rgba(15, 137, 137, 0.778) 60%,
-    rgba(17, 187, 206, 0.59) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.svc-blocks > .svc-block:nth-child(even) .svc-block__icon {
-  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-bright) 100%);
-  color: var(--navy);
-  box-shadow: 0 12px 28px rgba(40, 194, 186, 0.28);
-}
-
-.svc-blocks > .svc-block:nth-child(even) .svc-block__tag {
-  color: var(--teal-bright);
-}
-
-.svc-blocks > .svc-block:nth-child(even) h2 {
-  color: #fff;
-}
-
-.svc-blocks > .svc-block:nth-child(even) .svc-block__lead {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.svc-blocks > .svc-block:nth-child(even) .includes {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
-}
-
-.svc-blocks > .svc-block:nth-child(even) .includes h3 {
-  color: #fff;
-}
-
-.svc-blocks > .svc-block:nth-child(even) .includes ul li {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.svc-blocks > .svc-block:nth-child(even) .includes ul li::before {
-  background: rgba(40, 194, 186, 0.22);
-  color: var(--teal-bright);
-}
-
-.svc-blocks > .svc-block:nth-child(even) .includes ul li:hover {
-  background: rgba(255, 255, 255, 0.11);
-  border-color: var(--teal-bright);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-}
-
-.svc-blocks > .svc-block:nth-child(even) .link-more {
-  color: var(--teal-bright);
-}
-
-.svc-blocks > .svc-block:nth-child(even) .link-more:hover {
-  color: #fff;
-}
-
 /* ---------- 4-Step Connected Insurance Flow ---------- */
 .includes .steps4 {
   list-style: none;
@@ -493,9 +465,9 @@
   gap: 14px;
   padding: 18px 16px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #fff;
+  background: var(--teal-soft);
+  border: 1px solid rgba(7, 139, 134, 0.2);
+  color: var(--navy);
   font-weight: 500;
   font-size: 0.95rem;
   line-height: 1.55;
@@ -505,8 +477,8 @@
 
 .includes .steps4 li:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(40, 194, 186, 0.45);
+  background: #ffffff;
+  border-color: rgba(7, 139, 134, 0.45);
 }
 
 /* =========================================================
@@ -515,12 +487,11 @@
 
 .page-hero {
   position: relative;
-background: 
-    linear-gradient(115deg, 
-      rgba(7, 24, 44, 0.90) 30%, 
-      rgba(11, 100, 118, 0.65) 50%, 
-      rgba(8, 25, 44, 0.95) 100%
-    ),
+  background:
+    linear-gradient(115deg,
+      rgba(7, 24, 44, 0.90) 30%,
+      rgba(11, 100, 118, 0.65) 50%,
+      rgba(8, 25, 44, 0.95) 100%),
     url('/Images/HeroSvc.png') center / cover no-repeat !important;
   color: #ffffff !important;
   padding-top: clamp(130px, 15vw, 170px);
@@ -685,7 +656,8 @@ background:
    ========================================================= */
 .svc-nav {
   position: sticky !important;
-  top: 86px !important; /* Positions it directly under the main navbar pill */
+  top: 86px !important;
+  /* Positions it directly under the main navbar pill */
   z-index: 1010 !important;
   background: transparent !important;
   backdrop-filter: none !important;
@@ -770,13 +742,13 @@ background:
 }
 
 .includes .steps4 li {
-  background: rgba(40, 194, 186, 0.06);
+  background: var(--teal-soft);
   border: 1px solid rgba(40, 194, 186, 0.2);
   border-radius: 10px;
   padding: 14px 18px;
   text-align: center;
   font-weight: 500;
-  color: var(--off-white);
+  color: var(--navy);
 }
 
 /* Fix invisible glass button text on the services page hero */

@@ -13,81 +13,13 @@
 }
 
 .about-nav {
-  position: sticky;
-  top: 86px;
-  z-index: 1010;
-  padding-block: 10px 16px;
-  margin-top: -10px;
+  --about-nav-width: 45rem;
 }
 
 .about-nav .container {
-  max-width: 50rem;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(217, 227, 230, 0.85);
-  border-radius: 10px;
-  padding: 8px;
-  box-shadow: 0 10px 30px rgba(7, 24, 44, 0.08);
-  margin-top: -14px;
+  width: min(var(--about-nav-width), calc(100% - 45px));
+  max-width: var(--about-nav-width);
 }
-
-.about-nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.about-nav ul::-webkit-scrollbar {
-  display: none;
-}
-
-.about-nav a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: transparent;
-  color: var(--muted);
-  font-size: 1rem;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.about-nav a:hover,
-.about-nav a:focus-visible {
-  background: var(--teal-soft);
-  color: var(--teal-dark);
-}
-
-.about-nav a.is-active {
-  background: var(--teal);
-  border-color: var(--teal);
-  color: #fff;
-}
-
-.about-nav a i {
-  color: var(--teal);
-  transition: color 0.2s ease;
-}
-
-.about-nav a:hover i,
-.about-nav a:focus-visible i {
-  color: var(--teal-dark);
-}
-
-.about-nav a.is-active i {
-  color: #fff;
-}
-
-
 
 /* Shared Eyebrow */
 .about-eyebrow {
@@ -96,7 +28,7 @@
   gap: 10px;
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--teal-bright);
+  color: var(--teal);
   margin-bottom: 12px;
 }
 
@@ -105,7 +37,7 @@
   display: inline-block;
   width: 30px;
   height: 1.5px;
-  background: var(--teal-bright);
+  background: var(--teal);
 }
 
 .about-eyebrow--light {
@@ -256,9 +188,9 @@
 }
 
 .number-rect-item.is-active .number-rect-index {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: var(--teal-bright);
+  background: rgba(1, 183, 172, 0.1);
+  border-color: rgba(1, 183, 172, 0.32);
+  color: var(--teal-dark);
 }
 
 .number-rect-label {
@@ -297,7 +229,7 @@
   transform: translateX(-4px);
 }
 
-/* Dark Spotlight Stage on Left */
+/* Glass Spotlight Stage */
 .number-stage-card {
   position: relative;
   height: 100%;
@@ -305,10 +237,12 @@
   padding: 38px 34px;
   border-radius: 20px;
   background:
-    radial-gradient(95% 95% at 15% 15%, rgba(40, 194, 186, 0.24), transparent 65%),
-    linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 100%);
-  border: 1px solid rgba(40, 194, 186, 0.42);
-  box-shadow: 0 22px 48px rgba(11, 35, 64, 0.2);
+    radial-gradient(95% 95% at 15% 15%, rgba(1, 183, 172, 0.14), transparent 65%),
+    rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(1, 183, 172, 0.24);
+  box-shadow: 0 22px 48px rgba(11, 35, 64, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -318,8 +252,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(40, 194, 186, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(40, 194, 186, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(1, 183, 172, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1, 183, 172, 0.06) 1px, transparent 1px);
   background-size: 34px 34px;
   mask-image: radial-gradient(circle at 25% 25%, #000 35%, transparent 82%);
   pointer-events: none;
@@ -332,7 +266,7 @@
   top: -90px;
   left: -90px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(40, 194, 186, 0.28), transparent 70%);
+  background: radial-gradient(circle, rgba(1, 183, 172, 0.2), transparent 70%);
   pointer-events: none;
 }
 
@@ -369,15 +303,15 @@
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  background: rgba(40, 194, 186, 0.14);
-  border: 1px solid rgba(40, 194, 186, 0.38);
-  color: var(--teal-bright);
+  background: rgba(1, 183, 172, 0.08);
+  border: 1px solid rgba(1, 183, 172, 0.22);
+  color: var(--teal-dark);
   font-size: 0.86rem;
   font-weight: 600;
 }
 
 .number-stage-counter {
-  color: #8EDBD6;
+  color: var(--muted);
   font-size: 0.88rem;
   font-weight: 700;
 }
@@ -393,45 +327,54 @@
   font-size: clamp(2.4rem, 4.4vw, 3.9rem);
   font-weight: 800;
   line-height: 1.15;
-  color: #fff;
-  text-shadow: 0 0 26px rgba(40, 194, 186, 0.35);
+  color: var(--navy);
+  text-shadow: 0 0 26px rgba(1, 183, 172, 0.16);
   margin-bottom: 6px;
 }
 
 .number-stage-unit {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--teal-bright);
+  color: var(--teal-dark);
 }
 
 .number-stage-footer h3 {
-  color: #fff;
+  color: var(--navy);
   font-size: 1.28rem;
   margin-bottom: 8px;
 }
 
 .number-stage-footer p {
-  color: var(--on-dark);
+  color: var(--muted);
   font-size: 0.96rem;
   line-height: 1.75;
 }
 
-/* ---------- 3A. Individual Section 1: Remote Operations (Dark) ---------- */
+/* ---------- 3A. Individual Section 1: Remote Operations ---------- */
 .about-ops-section {
   background:
-    radial-gradient(70% 80% at 85% 15%, rgba(40, 194, 186, 0.15), transparent 65%),
-    linear-gradient(155deg, var(--navy-deep) 0%, var(--navy) 100%);
-  color: var(--on-dark);
+    radial-gradient(70% 80% at 85% 15%, rgba(1, 183, 172, 0.11), transparent 65%),
+    radial-gradient(55% 70% at 8% 85%, rgba(255, 255, 255, 0.9), transparent 70%),
+    var(--off-white);
+  color: var(--ink);
 }
 
 .about-ops-section h2 {
-  color: #fff;
+  color: var(--navy);
   margin-bottom: 35px;
+}
+
+.about-ops-section .about-eyebrow {
+  color: var(--teal-dark);
+}
+
+.about-ops-section .about-eyebrow::after {
+  background: var(--teal-dark);
 }
 
 .about-ops-lead,
 .about-ops-sub {
-  color: var(--on-dark);
+  color: var(--muted);
   font-size: 1rem;
   line-height: 1.85;
   margin-bottom: 14px;
@@ -453,51 +396,58 @@
   gap: 18px;
   padding: 24px 26px;
   border-radius: var(--r-md);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(40, 194, 186, 0.25);
-  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  background:
+    radial-gradient(80% 75% at 92% 0%, rgba(1, 183, 172, 0.12), transparent 72%),
+    rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(1, 183, 172, 0.2);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .ops-pillar-card:hover {
   transform: translateX(-5px);
   border-color: var(--teal-bright);
-  background: rgba(40, 194, 186, 0.08);
+  background:
+    radial-gradient(80% 75% at 92% 0%, rgba(1, 183, 172, 0.17), transparent 72%),
+    rgba(255, 255, 255, 0.9);
+  border-color: rgba(1, 183, 172, 0.42);
 }
 
 .ops-pillar-card__num {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--teal-bright);
+  color: var(--teal-dark);
   padding: 4px 10px;
   border-radius: var(--r-sm);
-  background: rgba(40, 194, 186, 0.14);
-  border: 1px solid rgba(40, 194, 186, 0.3);
+  background: rgba(1, 183, 172, 0.08);
+  border: 1px solid rgba(1, 183, 172, 0.22);
   flex-shrink: 0;
 }
 
 .ops-pillar-card__icon {
   font-size: 1.5rem;
-  color: var(--teal-bright);
+  color: var(--teal);
   line-height: 1;
   margin-top: 2px;
   flex-shrink: 0;
 }
 
 .ops-pillar-card h3 {
-  color: #fff;
+  color: var(--navy);
   font-size: 1.15rem;
   margin-bottom: 10px;
 }
 
 .ops-pillar-card p {
-  color: var(--on-dark);
+  color: var(--muted);
   font-size: 0.94rem;
   line-height: 1.75;
 }
 
 /* ---------- 3B. Individual Section 2: Healthcare Scope (Light) ---------- */
 .about-scope-section {
-  background: #fff;
+  background: var(--off-white);
 }
 
 .about-scope-section h2 {
@@ -515,9 +465,31 @@
   margin-bottom: 30px;
 }
 
+.about-scope-section .btn-pill-cta {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  box-shadow: 0 8px 20px rgba(1, 183, 172, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.about-scope-section .btn-pill-cta:hover {
+  color: #fff;
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+  box-shadow: 0 10px 24px rgba(1, 183, 172, 0.24);
+}
+
+.about-scope-section .btn-pill-circle {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+}
+
 .scope-matrix-box {
-  background: var(--off-white);
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(1, 183, 172, 0.16);
   border-radius: 18px;
   padding: 30px 28px;
   box-shadow: 0 12px 30px rgba(11, 35, 64, 0.05);
@@ -725,15 +697,6 @@
     grid-template-columns: 1fr;
   }
 
-  @media (max-width: 991.98px) {
-    .about-nav ul {
-      justify-content: flex-start;
-      overscroll-behavior-x: contain;
-      -webkit-overflow-scrolling: touch;
-      scroll-padding-inline: 8px;
-    }
-  }
-
   @media (max-width: 767.98px) {
     .about-hero-paragraphs {
       grid-template-columns: 1fr;
@@ -799,31 +762,6 @@
     padding-inline: 10px;
     font-size: 0.9rem;
     white-space: nowrap;
-  }
-
-  .about-nav {
-    top: 72px;
-    padding-block: 8px 12px;
-  }
-
-  .about-nav .container {
-    padding: 6px;
-    margin-top: -8px;
-  }
-
-  .about-nav ul {
-    justify-content: flex-start;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .about-nav a {
-    min-height: 42px;
-    padding-inline: 12px;
-    font-size: 0.9rem;
-    scroll-snap-align: start;
   }
 
   .number-stage-card {

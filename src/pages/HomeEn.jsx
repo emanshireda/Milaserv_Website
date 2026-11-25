@@ -36,13 +36,54 @@ const SERVICES = [
 ];
 
 const SECTORS = [
-  ['Hospitals', 'Specialist teams to manage patient communications and enquiries across hospital services.', 'hospital.jpg', 'hospitals'],
-  ['Medical Centres', 'Coordinated communication across your clinics and departments.', 'medical center.jpg', 'multi-branch'],
-  ['Private Clinics', 'Operational support that reduces the daily workload on your clinic team.', 'Clinic.webp', 'clinics'],
-  ['Medical Laboratories', 'Clear communication with laboratory patients and follow-up on their enquiries.', 'lab.jpg', 'labs'],
-  ['Pharmacies', 'Customer communication and operational support for your pharmacy’s online store.', 'Phramcy.jpg', 'pharmacies'],
-  ['Digital Health Platforms', 'Dedicated teams to assist users and improve their experience.', 'platforms.jpg', 'healthtech'],
-  ['Telehealth Providers', 'Support for virtual consultations, appointment scheduling, and clinical triage to improve the patient experience.', 'healthcare.jpg', 'telemedicine'],
+  {
+    id: 'hospitals',
+    num: '01',
+    title: 'Hospitals',
+    subtitle: 'Coordinated Support for Complex Hospital Operations',
+    description: 'Manage inbound/outbound calls, appointments, enquiries, escalations, and insurance administration across hospital departments.',
+    image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=85',
+  },
+  {
+    id: 'multi-branch',
+    num: '02',
+    title: 'Medical Centres & Polyclinics',
+    subtitle: 'Consistent Patient Communication Across Specialties',
+    description: 'Coordinate specialty bookings, appointment confirmations, reminders, enquiries, and feedback across departments.',
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=85',
+  },
+  {
+    id: 'labs',
+    num: '03',
+    title: 'Medical Laboratories',
+    subtitle: 'Reliable Communication from Booking to Results Follow-Up',
+    description: 'Handle test bookings, home sample collection scheduling, reminders, and result readiness notifications.',
+    image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1400&q=85',
+  },
+  {
+    id: 'pharmacies',
+    num: '04',
+    title: 'Pharmacies',
+    subtitle: 'Connecting Customer Service with E-commerce Operations',
+    description: 'Coordinate omnichannel enquiries, online orders, deliveries, returns, product updates, and loyalty programmes.',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1400&q=85',
+  },
+  {
+    id: 'healthtech',
+    num: '05',
+    title: 'Healthcare Platforms',
+    subtitle: 'Scalable Operational Support for Digital Healthcare',
+    description: 'Support user enquiries, account onboarding, service requests, and technical issue logging as your platform grows.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85',
+  },
+  {
+    id: 'telemedicine',
+    num: '06',
+    title: 'Telehealth Providers',
+    subtitle: 'Operational Support Throughout the Virtual Care Journey',
+    description: 'Manage virtual consultation bookings, physician schedules, platform access, follow-ups, and triage coordination.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=85',
+  },
 ];
 
 function AnimatedNumber({ value, decimals = 0 }) {
@@ -198,24 +239,49 @@ export default function HomeEn() {
 
       <section className="section sectors-section" id="sectors">
         <div className="container">
-          <div className="sectors-header mb-5" data-reveal><span className="svc-bento-tag">Healthcare Sectors</span><h2>Who we serve</h2><p>From private clinics to hospitals and digital platforms, we tailor our teams to the demands of your healthcare setting.</p></div>
+          <div className="sectors-header mb-5" data-reveal>
+            <span className="svc-bento-tag">Industries We Serve</span>
+            <h2>Healthcare Operations Support Tailored to Your Sector</h2>
+            <p>Dedicated remote teams for hospitals, medical centres, laboratories, pharmacies, healthcare platforms, and telehealth providers across KSA and the GCC.</p>
+          </div>
+
           <div className="row align-items-stretch g-4 g-xl-5">
             <div className="col-lg-7" data-reveal>
               <ul className="sectors-interactive-list">
-                {SECTORS.map(([title, description, , id], index) => (
-                  <li key={title}>
-                    <Link className={`sector-item ${sector === index ? 'active' : ''}`} to={`/en/sectors#${id}`} onMouseEnter={() => setSector(index)} onFocus={() => setSector(index)}>
-                      <div className="sector-item__info"><h3>{title}</h3><p>{description}</p></div><div className="sector-item__arrow"><i className="bi bi-arrow-right" aria-hidden="true" /></div>
+                {SECTORS.map((item, index) => (
+                  <li key={item.id}>
+                    <Link
+                      className={`sector-item ${sector === index ? 'active' : ''}`}
+                      to={`/en/sectors#${item.id}`}
+                      onMouseEnter={() => setSector(index)}
+                      onFocus={() => setSector(index)}
+                    >
+                      <div className="sector-item__info">
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                      </div>
+                      <div className="sector-item__arrow">
+                        <i className="bi bi-arrow-right" aria-hidden="true" />
+                      </div>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
+
             <div className="col-lg-5" data-reveal>
               <div className="sector-preview-wrapper">
-                <img src={publicAsset(`Images/${SECTORS[sector][2]}`)} alt={SECTORS[sector][0]} className="sector-preview-img active" />
+                <img
+                  src={SECTORS[sector].image}
+                  alt={SECTORS[sector].title}
+                  className="sector-preview-img active"
+                />
                 <div className="sector-preview-overlay" />
-                <div className="sector-preview-content"><span className="sector-preview-badge">Healthcare sectors</span><h3>{SECTORS[sector][0]}</h3><p>{SECTORS[sector][1]}</p></div>
+                <div className="sector-preview-content">
+                  <span className="sector-preview-badge">Sector {SECTORS[sector].num}</span>
+                  <h3>{SECTORS[sector].title}</h3>
+                  <p>{SECTORS[sector].subtitle}</p>
+                </div>
               </div>
             </div>
           </div>
