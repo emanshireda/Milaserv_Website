@@ -15,8 +15,7 @@ const SERVICES_LINKS = [
 
 const SECTORS_LINKS_AR = [
   { to: '/sectors#hospitals', label: 'المستشفيات' },
-  { to: '/sectors#multi-branch', label: 'المجمعات الطبية' },
-  { to: '/sectors#clinics', label: 'العيادات الخاصة' },
+  { to: '/sectors#multi-branch', label: 'المراكز والمجمعات الطبية' },
   { to: '/sectors#labs', label: 'المختبرات الطبية' },
   { to: '/sectors#pharmacies', label: 'الصيدليات' },
   { to: '/sectors#healthtech', label: 'منصات الرعاية الصحية' },
@@ -248,8 +247,7 @@ export default function Navbar() {
                     <ul className="ms-dropdown-menu" role="menu">
                       {(isEnglish ? [
                         { to: '/en/sectors#hospitals', label: 'Hospitals' },
-                        { to: '/en/sectors#multi-branch', label: 'Medical Centres' },
-                        { to: '/en/sectors#clinics', label: 'Private Clinics' },
+                        { to: '/en/sectors#multi-branch', label: 'Medical Centres & Polyclinics' },
                         { to: '/en/sectors#labs', label: 'Medical Laboratories' },
                         { to: '/en/sectors#pharmacies', label: 'Pharmacies' },
                         { to: '/en/sectors#healthtech', label: 'Digital Health Platforms' },

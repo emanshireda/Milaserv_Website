@@ -149,6 +149,10 @@ html[lang="en"] .essay-card__body {
   text-align: left;
 }
 
+html[lang="en"] .svc-bento-card p {
+  margin-top: 0.5rem;
+}
+
 html[lang="en"] .journey-steps {
   direction: ltr;
 }
